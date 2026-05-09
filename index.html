@@ -60,17 +60,23 @@
         <span>Agência de Gestão Empresarial</span>
       </div>
     </a>
-    <div class="nav-links">
-      <a href="#servicos">Serviços</a>
-      <a href="#processo">Como Funciona</a>
-      <a href="#precos">Preços</a>
-      <a href="#contacto">Contacto</a>
-      <a href="#contacto" class="btn-nav-cta">
+    <div class="nav-links" id="nav-links">
+      <a href="#servicos" onclick="fecharMenu()">Serviços</a>
+      <a href="#processo" onclick="fecharMenu()">Como Funciona</a>
+      <a href="#precos" onclick="fecharMenu()">Preços</a>
+      <a href="#contacto" onclick="fecharMenu()">Contacto</a>
+      <a href="#contacto" class="btn-nav-cta" onclick="fecharMenu()">
         <i class="fab fa-whatsapp"></i> Falar Connosco
       </a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-backdrop" id="nav-backdrop" onclick="fecharMenu()"></div>
 
 <!-- ═══ HERO ══════════════════════════════════════════════════ -->
 <section class="hero" id="inicio">
@@ -478,6 +484,24 @@
 
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
 <script>
+  // ── Menu Hamburger ─────────────────────────────────────────
+  function toggleMenu() {
+    const links    = document.getElementById('nav-links');
+    const burger   = document.getElementById('nav-hamburger');
+    const backdrop = document.getElementById('nav-backdrop');
+    const aberto   = links.classList.toggle('open');
+    burger.classList.toggle('open', aberto);
+    backdrop.classList.toggle('open', aberto);
+    document.body.style.overflow = aberto ? 'hidden' : '';
+  }
+
+  function fecharMenu() {
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('nav-hamburger').classList.remove('open');
+    document.getElementById('nav-backdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   // ── Navbar scroll ──────────────────────────────────────────
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
