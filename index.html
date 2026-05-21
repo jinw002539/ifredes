@@ -1,574 +1,751 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-  <meta charset="UTF-8"/>
-   <!-- ═══ FAVICONS ═══════════════════════════════════════════ -->
-  <link rel="icon" type="image/x-icon"       href="favicon.ico"/>
-  <link rel="icon" type="image/svg+xml"      href="favicon.svg"/>
-  <link rel="icon" type="image/png" sizes="32x32"   href="favicon-32.png"/>
-  <link rel="icon" type="image/png" sizes="16x16"   href="favicon-16.png"/>
-  <link rel="apple-touch-icon" sizes="180x180"      href="favicon-180.png"/>
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png"/>
-  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png"/>
-  <meta name="theme-color" content="#1a3a6e"/>
+  <meta charset="UTF-8" />
+  <!-- ═══ FAVICONS ═══════════════════════════════════════════ -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
+  <meta name="theme-color" content="#1a3a6e" />
   <!-- ════════════════════════════════════════════════════════ -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LF Redes & Consultoria — Abertura de Empresas em Moçambique</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 </head>
+
 <body>
 
-<!-- ═══ MODAL CONTACTO ═══════════════════════════════════════ -->
-<div class="modal-overlay" id="modal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="fecharModal()">
-      <i class="fa fa-times"></i>
-    </button>
-    <div class="modal-header-ico">
-      <i class="fa fa-headset"></i>
-    </div>
-    <h3>Falar com um Consultor</h3>
-    <p class="modal-sub">Preencha os seus dados para ser redirecionado ao WhatsApp.</p>
-    <div class="modal-pacote-tag" id="modal-pacote-label">—</div>
-
-    <form id="modal-form" onsubmit="irWhatsApp(event)">
-      <input type="text" class="modal-input" id="modal-nome"
-        placeholder="O seu nome completo *" required/>
-      <input type="email" class="modal-input" id="modal-email"
-        placeholder="O seu e-mail (opcional)"/>
-
-      <button type="submit" class="btn-modal-wa">
-        <i class="fab fa-whatsapp"></i> Continuar para o WhatsApp
+  <!-- ═══ MODAL CONTACTO ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharModal()">
+        <i class="fa fa-times"></i>
       </button>
-    </form>
-    <p class="modal-aviso">
-      <i class="fab fa-whatsapp"></i>
-      Será redirecionado ao WhatsApp com a informação do serviço seleccionado.
-    </p>
-  </div>
-</div>
+      <div class="modal-header-ico">
+        <i class="fa fa-headset"></i>
+      </div>
+      <h3>Falar com um Consultor</h3>
+      <p class="modal-sub">Preencha os seus dados para ser redirecionado ao WhatsApp.</p>
+      <div class="modal-pacote-tag" id="modal-pacote-label">—</div>
 
-<!-- ═══ NAVBAR ════════════════════════════════════════════════ -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <div class="nav-logo-icon">LF</div>
-      <div class="nav-logo-text">
-        <strong>LF Redes & Consultoria</strong>
-        <span>Agência de Gestão Empresarial</span>
-      </div>
-    </a>
-    <div class="nav-links" id="nav-links">
-      <a href="#servicos" onclick="fecharMenu()">Serviços</a>
-      <a href="#processo" onclick="fecharMenu()">Como Funciona</a>
-      <a href="#precos" onclick="fecharMenu()">Preços</a>
-      <a href="#contacto" onclick="fecharMenu()">Contacto</a>
-      <a href="#contacto" class="btn-nav-cta" onclick="fecharMenu()">
-        <i class="fab fa-whatsapp"></i> Falar Connosco
-      </a>
-    </div>
-    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</nav>
-<div class="nav-backdrop" id="nav-backdrop" onclick="fecharMenu()"></div>
+      <form id="modal-form" onsubmit="irWhatsApp(event)">
+        <input type="text" class="modal-input" id="modal-nome" placeholder="O seu nome completo *" required />
+        <input type="email" class="modal-input" id="modal-email" placeholder="O seu e-mail (opcional)" />
 
-<!-- ═══ HERO ══════════════════════════════════════════════════ -->
-<section class="hero" id="inicio">
-  <div class="hero-blob hero-blob-1"></div>
-  <div class="hero-blob hero-blob-2"></div>
-
-  <div class="hero-inner">
-    <div>
-      <div class="hero-badge">
-        <span></span> Especialistas em Abertura de Empresas em Moçambique
-      </div>
-      <h1>Abra a Sua Empresa<br/>de Forma <em>Rápida</em> e Segura</h1>
-      <p class="hero-sub">
-        A LF Redes & Consultoria trata de todo o processo — da reserva de nome
-        ao alvará — para que se possa focar no que realmente importa: o seu negócio.
-      </p>
-      <div class="hero-btns">
-        <button class="btn-hero-main" onclick="abrirModal('Consulta Geral', '')">
-          <i class="fab fa-whatsapp"></i> Falar com um Consultor
-        </button>
-        <a href="#precos" class="btn-hero-ghost">
-          <i class="fa fa-tag"></i> Ver Preços
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="n">+200</div>
-          <div class="l">Empresas Abertas</div>
-        </div>
-        <div class="hero-stat">
-          <div class="n">5+</div>
-          <div class="l">Anos de Experiência</div>
-        </div>
-        <div class="hero-stat">
-          <div class="n">98%</div>
-          <div class="l">Clientes Satisfeitos</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-card">
-      <div class="hero-card-title">Serviços & Preços Rápidos</div>
-
-      <div class="servico-pill">
-        <i class="fa fa-file-signature"></i> Reserva de Nome
-        <span class="preco">400 MT</span>
-      </div>
-      <div class="servico-pill">
-        <i class="fa fa-handshake"></i> Contrato de Sociedade
-        <span class="preco">2.500 MT</span>
-      </div>
-      <div class="servico-pill">
-        <i class="fa fa-certificate"></i> Certidão Definitiva
-        <span class="preco">2.500 MT</span>
-      </div>
-      <div class="servico-pill">
-        <i class="fa fa-id-card"></i> NUIT Empresarial
-        <span class="preco">1.000 MT</span>
-      </div>
-      <div class="servico-pill">
-        <i class="fa fa-stamp"></i> Alvará
-        <span class="preco">4.900 MT</span>
-      </div>
-      <div class="servico-pill">
-        <i class="fa fa-tools"></i> Mão de Obra
-        <span class="preco">5.000 MT</span>
-      </div>
-
-      <div class="hero-card-cta" onclick="abrirModal('Pacote Completo','')">
-        <p><i class="fa fa-rocket"></i> &nbsp;Quero abrir a minha empresa!</p>
-        <i class="fa fa-arrow-right"></i>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SERVIÇOS ══════════════════════════════════════════════ -->
-<section class="sec sec-servicos" id="servicos">
-  <div class="sec-inner">
-    <div class="sec-header reveal">
-      <span class="sec-tag">O que fazemos</span>
-      <h2 class="sec-title">Prestação de <em>Serviços</em></h2>
-      <p class="sec-lead">Da abertura ao alvará, tratamos de toda a burocracia para que a sua empresa esteja em funcionamento legal o mais rápido possível.</p>
-    </div>
-    <div class="servicos-grid">
-      <div class="sc reveal delay-1">
-        <div class="sc-ico"><i class="fa fa-file-signature"></i></div>
-        <h4>Abertura de Empresa</h4>
-        <p>Tratamos de todo o processo de abertura da sua empresa junto das entidades competentes de Moçambique.</p>
-      </div>
-      <div class="sc reveal delay-2">
-        <div class="sc-ico"><i class="fa fa-bookmark"></i></div>
-        <h4>Reserva de Nome</h4>
-        <p>Reservamos o nome da sua futura empresa junto do CGER, garantindo exclusividade e conformidade legal.</p>
-      </div>
-      <div class="sc reveal delay-3">
-        <div class="sc-ico"><i class="fa fa-certificate"></i></div>
-        <h4>Certidão Definitiva</h4>
-        <p>Obtemos a certidão definitiva da sua empresa, documento essencial para o exercício legal da actividade.</p>
-      </div>
-      <div class="sc reveal delay-1">
-        <div class="sc-ico"><i class="fa fa-newspaper"></i></div>
-        <h4>Publicação no BR</h4>
-        <p>Tratamos da publicação no Boletim da República, tornando a sua empresa oficialmente reconhecida pelo Estado.</p>
-      </div>
-      <div class="sc reveal delay-2">
-        <div class="sc-ico"><i class="fa fa-stamp"></i></div>
-        <h4>Emissão de Alvará</h4>
-        <p>Obtemos o alvará de funcionamento necessário para que a sua empresa possa operar legalmente.</p>
-      </div>
-      <div class="sc reveal delay-3">
-        <div class="sc-ico"><i class="fa fa-id-card"></i></div>
-        <h4>NUIT Empresarial</h4>
-        <p>Registamos o NUIT da sua empresa junto da AT, habilitando-a a cumprir todas as obrigações fiscais.</p>
-      </div>
-      <div class="sc reveal delay-1">
-        <div class="sc-ico"><i class="fa fa-university"></i></div>
-        <h4>Abertura de Conta Bancária</h4>
-        <p>Apoiamos na abertura da conta bancária empresarial para que possa iniciar as suas transacções.</p>
-      </div>
-      <div class="sc reveal delay-2">
-        <div class="sc-ico"><i class="fa fa-users"></i></div>
-        <h4>Abertura de NUIT Empresarial</h4>
-        <p>Processamos a abertura do NUIT junto das autoridades fiscais de forma rápida e eficiente.</p>
-      </div>
-      <div class="sc reveal delay-3">
-        <div class="sc-ico"><i class="fa fa-play-circle"></i></div>
-        <h4>Início de Actividade</h4>
-        <p>Elaboramos toda a documentação necessária para a declaração de início de actividade da sua empresa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROCESSO ══════════════════════════════════════════════ -->
-<section class="sec sec-processo" id="processo">
-  <div class="sec-inner">
-    <div class="sec-header reveal">
-      <span class="sec-tag">Como Funciona</span>
-      <h2 class="sec-title">Processo <em>Simples</em>, em 4 Passos</h2>
-      <p class="sec-lead">Não precisa de se preocupar com burocracia. Nós tratamos de tudo.</p>
-    </div>
-    <div class="steps">
-      <div class="step reveal delay-1">
-        <div class="step-n">1</div>
-        <h4>Contacto Inicial</h4>
-        <p>Fale connosco pelo WhatsApp ou formulário. Vamos perceber o que precisa e explicar o processo.</p>
-      </div>
-      <div class="step reveal delay-2">
-        <div class="step-n">2</div>
-        <h4>Entrega de Documentos</h4>
-        <p>Fornecemos uma lista simples dos documentos necessários. Você entrega, nós tratamos do resto.</p>
-      </div>
-      <div class="step reveal delay-3">
-        <div class="step-n">3</div>
-        <h4>Processamento</h4>
-        <p>A nossa equipa trata de toda a submissão às entidades competentes — CGER, AT, municípios.</p>
-      </div>
-      <div class="step reveal delay-4">
-        <div class="step-n">4</div>
-        <h4>Empresa Pronta</h4>
-        <p>Recebe a sua empresa completamente legalizada, pronta para operar e gerar negócio.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PREÇOS ════════════════════════════════════════════════ -->
-<section class="sec sec-precos" id="precos">
-  <div class="sec-inner">
-    <div class="sec-header reveal">
-      <span class="sec-tag">Tabela de Preços</span>
-      <h2 class="sec-title" style="color:#fff;">Preços <em style="color:var(--amarelo)">Transparentes</em></h2>
-      <p class="sec-lead">Sem surpresas. Preços fixos para cada serviço.</p>
-    </div>
-
-    <!-- Linha 1: 4 serviços -->
-    <div class="precos-grid">
-
-      <div class="preco-card reveal delay-1">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-bookmark"></i></div>
-        </div>
-        <div class="pc-nome">Reserva de Nome</div>
-        <div class="pc-valor"><sup>MT</sup> 400</div>
-        <span class="pc-periodo">pagamento único</span>
-        <p class="pc-desc">Reserva exclusiva do nome da sua empresa junto do CGER — primeiro passo obrigatório.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('Reserva de Nome','MT 400')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-      <div class="preco-card reveal delay-2">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-handshake"></i></div>
-        </div>
-        <div class="pc-nome">Contrato de Sociedade</div>
-        <div class="pc-valor"><sup>MT</sup> 2.500</div>
-        <span class="pc-periodo">pagamento único</span>
-        <p class="pc-desc">Elaboração e autenticação do contrato de sociedade da sua empresa, com toda a validade legal.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('Contrato de Sociedade','MT 2.500')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-      <div class="preco-card destaque reveal delay-3">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-certificate"></i></div>
-          <span class="pc-badge">Popular</span>
-        </div>
-        <div class="pc-nome">Certidão Definitiva</div>
-        <div class="pc-valor"><sup>MT</sup> 2.500</div>
-        <span class="pc-periodo">pagamento único</span>
-        <p class="pc-desc" style="color:var(--texto-s)">Obtenção da certidão definitiva — documento essencial para o funcionamento legal da sua empresa.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('Certidão Definitiva','MT 2.500')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-      <div class="preco-card reveal delay-4">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-id-card"></i></div>
-        </div>
-        <div class="pc-nome">NUIT Empresarial</div>
-        <div class="pc-valor"><sup>MT</sup> 1.000</div>
-        <span class="pc-periodo">pagamento único</span>
-        <p class="pc-desc">Registo do Número Único de Identificação Tributária da sua empresa junto da AT.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('NUIT Empresarial','MT 1.000')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Linha 2: 4 serviços -->
-    <div class="precos-grid-2">
-
-      <div class="preco-card reveal delay-1">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-stamp"></i></div>
-        </div>
-        <div class="pc-nome">Alvará</div>
-        <div class="pc-valor"><sup>MT</sup> 4.900</div>
-        <span class="pc-periodo">pagamento único</span>
-        <p class="pc-desc">Emissão do alvará de funcionamento — licença obrigatória para o exercício legal da actividade comercial.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('Alvará','MT 4.900')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-      <div class="preco-card reveal delay-2">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-tools"></i></div>
-        </div>
-        <div class="pc-nome">Mão de Obra</div>
-        <div class="pc-valor"><sup>MT</sup> 5.000</div>
-        <span class="pc-periodo">pagamento único</span>
-        <p class="pc-desc">Serviço completo de acompanhamento e execução de todos os trâmites junto das entidades públicas.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('Mão de Obra','MT 5.000')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-      <div class="preco-card reveal delay-3">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-university"></i></div>
-        </div>
-        <div class="pc-nome">Abertura de Conta Bancária</div>
-        <div class="pc-valor"><sup>MT</sup> 6.000</div>
-        <span class="pc-periodo">pagamento único</span>
-        <p class="pc-desc">Apoio completo na abertura da conta bancária empresarial no banco da sua preferência.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('Abertura de Conta Bancária','MT 6.000')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-      <div class="preco-card reveal delay-4">
-        <div class="pc-top">
-          <div class="pc-ico"><i class="fa fa-file-invoice"></i></div>
-          <span class="pc-badge" style="background:var(--azul-clr);color:#fff;">Mensal</span>
-        </div>
-        <div class="pc-nome">Pagamento de IVA</div>
-        <div class="pc-valor"><sup>MT</sup> 4.000</div>
-        <span class="pc-periodo">por mês</span>
-        <p class="pc-desc">Gestão mensal das obrigações de IVA — declarações, cálculo e submissão à Autoridade Tributária.</p>
-        <div class="pc-divider"></div>
-        <button class="pc-btn" onclick="abrirModal('Pagamento de IVA (Mensal)','MT 4.000/mês')">
-          <i class="fab fa-whatsapp"></i> Solicitar
-        </button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA ═══════════════════════════════════════════════════ -->
-<section class="sec sec-cta">
-  <div class="sec-inner">
-    <div class="cta-box reveal">
-      <div class="cta-content">
-        <h2>Pronto para abrir a sua <em>empresa</em>?</h2>
-        <p>Fale connosco hoje e comece o processo. É mais simples do que pensa.</p>
-      </div>
-      <div class="cta-actions">
-        <button class="btn-wa" onclick="abrirModal('Consulta Geral','')">
-          <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
-        </button>
-        <a href="#precos" class="btn-wa-ghost">
-          <i class="fa fa-tag"></i> Ver Preços
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CONTACTO ══════════════════════════════════════════════ -->
-<section class="sec-contacto" id="contacto">
-  <div class="contacto-inner">
-    <div>
-      <h2>Contacte-nos</h2>
-      <p>Estamos disponíveis para responder a todas as suas dúvidas sobre a abertura da sua empresa.</p>
-
-      <div class="cont-item">
-        <div class="cont-ico"><i class="fa fa-phone"></i></div>
-        <div>
-          <strong>+258 84 569 8732</strong>
-          <span>Telefone principal / WhatsApp</span>
-        </div>
-      </div>
-      <div class="cont-item">
-        <div class="cont-ico"><i class="fa fa-phone"></i></div>
-        <div>
-          <strong>+258 83 372 7853</strong>
-          <span>Telefone alternativo</span>
-        </div>
-      </div>
-      <div class="cont-item">
-        <div class="cont-ico"><i class="fa fa-envelope"></i></div>
-        <div>
-          <strong>lflimitada01@gmail.com</strong>
-          <span>E-mail</span>
-        </div>
-      </div>
-      <div class="cont-item">
-        <div class="cont-ico"><i class="fa fa-map-marker-alt"></i></div>
-        <div>
-          <strong>Maputo, Moçambique</strong>
-          <span>Localização</span>
-        </div>
-      </div>
-
-      <div class="social-row">
-        <a href="https://wa.me/258845698732" class="soc-btn wa" target="_blank" title="WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="#" class="soc-btn fb" title="Facebook — LF Redes e Consultoria">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" class="soc-btn ig" title="Instagram — LF Redes e Consultoria">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" class="soc-btn tt" title="TikTok — LF Redes e Consultoria">
-          <i class="fab fa-tiktok"></i>
-        </a>
-      </div>
-    </div>
-
-    <div class="contacto-form-box">
-      <h4>Envie uma mensagem</h4>
-      <form onsubmit="enviarFormContacto(event)">
-        <input type="text" class="cf-input" placeholder="O seu nome *" required/>
-        <input type="tel" class="cf-input" placeholder="Telefone *" required/>
-        <input type="email" class="cf-input" placeholder="E-mail (opcional)"/>
-        <select class="cf-input">
-          <option value="" disabled selected>Seleccionar serviço...</option>
-          <option>Reserva de Nome — MT 400</option>
-          <option>Contrato de Sociedade — MT 2.500</option>
-          <option>Certidão Definitiva — MT 2.500</option>
-          <option>NUIT Empresarial — MT 1.000</option>
-          <option>Alvará — MT 4.900</option>
-          <option>Mão de Obra — MT 5.000</option>
-          <option>Abertura de Conta Bancária — MT 6.000</option>
-          <option>Pagamento de IVA — MT 4.000/mês</option>
-          <option>Pacote Completo</option>
-        </select>
-        <button type="submit" class="btn-cf">
-          <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
+        <button type="submit" class="btn-modal-wa">
+          <i class="fab fa-whatsapp"></i> Continuar para o WhatsApp
         </button>
       </form>
+      <p class="modal-aviso">
+        <i class="fab fa-whatsapp"></i>
+        Será redirecionado ao WhatsApp com a informação do serviço seleccionado.
+      </p>
     </div>
   </div>
-</section>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
-<footer>
-  <p>© 2026 <span>LF Redes & Consultoria, Lda</span> — Agência de Contabilidade, Auditoria e Gestão Empresarial. Maputo, Moçambique.</p>
-</footer>
+  <!-- ═══ NAVBAR ════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">LF</div>
+        <div class="nav-logo-text">
+          <strong>LF Redes & Consultoria</strong>
+          <span>Agência de Gestão Empresarial</span>
+        </div>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#servicos" onclick="fecharMenu()">Serviços</a>
+        <a href="#processo" onclick="fecharMenu()">Como Funciona</a>
+        <a href="#precos" onclick="fecharMenu()">Preços</a>
+        <a href="#contacto" onclick="fecharMenu()">Contacto</a>
+        <a href="#contacto" class="btn-nav-cta" onclick="fecharMenu()">
+          <i class="fab fa-whatsapp"></i> Falar Connosco
+        </a>
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" id="nav-backdrop" onclick="fecharMenu()"></div>
 
-<!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
-<script>
-  // ── Menu Hamburger ─────────────────────────────────────────
-  function toggleMenu() {
-    const links    = document.getElementById('nav-links');
-    const burger   = document.getElementById('nav-hamburger');
-    const backdrop = document.getElementById('nav-backdrop');
-    const aberto   = links.classList.toggle('open');
-    burger.classList.toggle('open', aberto);
-    backdrop.classList.toggle('open', aberto);
-    document.body.style.overflow = aberto ? 'hidden' : '';
-  }
+  <!-- ═══ HERO ══════════════════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
 
-  function fecharMenu() {
-    document.getElementById('nav-links').classList.remove('open');
-    document.getElementById('nav-hamburger').classList.remove('open');
-    document.getElementById('nav-backdrop').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span></span> Especialistas em Abertura de Empresas em Moçambique
+        </div>
+        <h1>Abra a Sua Empresa<br />de Forma <em>Rápida</em> e Segura</h1>
+        <p class="hero-sub">
+          A LF Redes & Consultoria trata de todo o processo — da reserva de nome
+          ao alvará — para que se possa focar no que realmente importa: o seu negócio.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-hero-main" onclick="abrirModal('Consulta Geral', '')">
+            <i class="fab fa-whatsapp"></i> Falar com um Consultor
+          </button>
+          <a href="#precos" class="btn-hero-ghost">
+            <i class="fa fa-tag"></i> Ver Preços
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="n">+200</div>
+            <div class="l">Empresas Abertas</div>
+          </div>
+          <div class="hero-stat">
+            <div class="n">5+</div>
+            <div class="l">Anos de Experiência</div>
+          </div>
+          <div class="hero-stat">
+            <div class="n">98%</div>
+            <div class="l">Clientes Satisfeitos</div>
+          </div>
+        </div>
+      </div>
 
-  // ── Navbar scroll ──────────────────────────────────────────
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
-  });
+      <div class="hero-card">
+        <div class="hero-card-title">Serviços & Preços Rápidos</div>
 
-  // ── Reveal on scroll ──────────────────────────────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        <div class="servico-pill">
+          <i class="fa fa-file-signature"></i> Reserva de Nome
+          <span class="preco">400 MT</span>
+        </div>
+        <div class="servico-pill">
+          <i class="fa fa-handshake"></i> Contrato de Sociedade
+          <span class="preco">2.500 MT</span>
+        </div>
+        <div class="servico-pill">
+          <i class="fa fa-certificate"></i> Certidão Definitiva
+          <span class="preco">2.500 MT</span>
+        </div>
+        <div class="servico-pill">
+          <i class="fa fa-id-card"></i> NUIT Empresarial
+          <span class="preco">1.000 MT</span>
+        </div>
+        <div class="servico-pill">
+          <i class="fa fa-stamp"></i> Alvará
+          <span class="preco">4.900 MT</span>
+        </div>
+        <div class="servico-pill">
+          <i class="fa fa-tools"></i> Mão de Obra
+          <span class="preco">5.000 MT</span>
+        </div>
 
-  // ── Modal ──────────────────────────────────────────────────
-  let _pacote = '', _preco = '';
+        <div class="hero-card-cta" onclick="abrirModal('Pacote Completo','')">
+          <p><i class="fa fa-rocket"></i> &nbsp;Quero abrir a minha empresa!</p>
+          <i class="fa fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  function abrirModal(pacote, preco) {
-    _pacote = pacote; _preco = preco;
-    const label = preco ? `${pacote} — ${preco}` : pacote;
-    document.getElementById('modal-pacote-label').textContent = label;
-    document.getElementById('modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('modal-nome').focus();
-  }
+  <!-- ═══ SERVIÇOS ══════════════════════════════════════════════ -->
+  <section class="sec sec-servicos" id="servicos">
+    <div class="sec-inner">
+      <div class="sec-header reveal">
+        <span class="sec-tag">O que fazemos</span>
+        <h2 class="sec-title">Prestação de <em>Serviços</em></h2>
+        <p class="sec-lead">Da abertura ao alvará, tratamos de toda a burocracia para que a sua empresa esteja em
+          funcionamento legal o mais rápido possível.</p>
+      </div>
+      <div class="servicos-grid">
 
-  function fecharModal() {
-    document.getElementById('modal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+        <div class="sc reveal delay-1" data-preco="Criação de Empresas" data-valor="Ver preços">
+          <div class="sc-hover-tag"><i class="fa fa-arrow-right"></i> Ver preço</div>
+          <div class="sc-ico"><i class="fa fa-building"></i></div>
+          <h4>Criação de Empresas</h4>
+          <p>Tratamos de todo o processo de criação e registo da sua empresa junto das entidades competentes.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-  document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) fecharModal();
-  });
+        <div class="sc reveal delay-2" data-preco="Contabilidade Organizada" data-valor="MT 10.000/mês">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 10.000/mês</div>
+          <div class="sc-ico"><i class="fa fa-calculator"></i></div>
+          <h4>Contabilidade Organizada</h4>
+          <p>Gestão contabilística completa e organizada da sua empresa, com relatórios mensais detalhados.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+        <div class="sc reveal delay-3" data-preco="Abertura de Conta Empresarial no Banco" data-valor="MT 8.500">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 8.500</div>
+          <div class="sc-ico"><i class="fa fa-university"></i></div>
+          <h4>Abertura de Conta Bancária</h4>
+          <p>Apoiamos na abertura da conta bancária empresarial para que possa iniciar as suas transacções.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-  function irWhatsApp(e) {
-    e.preventDefault();
-    const nome  = document.getElementById('modal-nome').value.trim();
-    const email = document.getElementById('modal-email').value.trim();
-    if (!nome) { document.getElementById('modal-nome').focus(); return; }
+        <div class="sc reveal delay-1" data-preco="Registro no INSS" data-valor="MT 5.000">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 5.000</div>
+          <div class="sc-ico"><i class="fa fa-shield-alt"></i></div>
+          <h4>Registro no INSS</h4>
+          <p>Registo da sua empresa e colaboradores no Instituto Nacional de Segurança Social, cumprindo todas as
+            obrigações legais.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-    let msg = `Olá! Sou *${nome}*`;
-    if (email) msg += ` (${email})`;
-    msg += ` e tenho interesse no serviço: *${_pacote}*`;
-    if (_preco) msg += ` — *${_preco}*`;
-    msg += '.\n\nPoderia dar-me mais informações?';
+        <div class="sc reveal delay-2" data-preco="Análise de Documentos" data-valor="MT 2.000">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 2.000</div>
+          <div class="sc-ico"><i class="fa fa-search"></i></div>
+          <h4>Análise de Documentos</h4>
+          <p>Revisão e análise detalhada de toda a documentação empresarial, garantindo conformidade legal e fiscal.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-    const url = `https://wa.me/258845698732?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
-    fecharModal();
-    document.getElementById('modal-form').reset();
-  }
+        <div class="sc reveal delay-3" data-preco="Reserva de Nome" data-valor="MT 400">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 400</div>
+          <div class="sc-ico"><i class="fa fa-bookmark"></i></div>
+          <h4>Reserva de Nome</h4>
+          <p>Reservamos o nome da sua futura empresa junto do CGER, garantindo exclusividade e conformidade legal.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-  // ── Formulário de contacto ─────────────────────────────────
-  function enviarFormContacto(e) {
-    e.preventDefault();
-    const form   = e.target;
-    const nome   = form.querySelector('input[type="text"]').value.trim();
-    const tel    = form.querySelector('input[type="tel"]').value.trim();
-    const serv   = form.querySelector('select').value;
+        <div class="sc reveal delay-1" data-preco="Certidão Definitiva" data-valor="MT 2.500">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 2.500</div>
+          <div class="sc-ico"><i class="fa fa-certificate"></i></div>
+          <h4>Certidão Definitiva</h4>
+          <p>Obtemos a certidão definitiva da sua empresa, documento essencial para o exercício legal da actividade.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-    let msg = `Olá! Sou *${nome}* (${tel})`;
-    if (serv) msg += ` e tenho interesse em: *${serv}*`;
-    msg += '.\n\nAgradecia o vosso contacto.';
+        <div class="sc reveal delay-2" data-preco="Alvará" data-valor="MT 4.900">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 4.900</div>
+          <div class="sc-ico"><i class="fa fa-stamp"></i></div>
+          <h4>Emissão de Alvará</h4>
+          <p>Obtemos o alvará de funcionamento necessário para que a sua empresa possa operar legalmente.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
 
-    const url = `https://wa.me/258845698732?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
-  }
-</script>
+        <div class="sc reveal delay-3" data-preco="NUIT Empresarial" data-valor="MT 1.000">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 1.000</div>
+          <div class="sc-ico"><i class="fa fa-id-card"></i></div>
+          <h4>NUIT Empresarial</h4>
+          <p>Registamos o NUIT da sua empresa junto da AT, habilitando-a a cumprir todas as obrigações fiscais.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
+
+        <div class="sc reveal delay-1" data-preco="Pagamento de IVA (Mensal)" data-valor="MT 4.000/mês">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 4.000/mês</div>
+          <div class="sc-ico"><i class="fa fa-file-invoice"></i></div>
+          <h4>Pagamento de IVA</h4>
+          <p>Gestão mensal das obrigações de IVA — declarações, cálculo e submissão à Autoridade Tributária.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
+
+        <div class="sc reveal delay-2" data-preco="Contrato de Sociedade" data-valor="MT 2.500">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 2.500</div>
+          <div class="sc-ico"><i class="fa fa-handshake"></i></div>
+          <h4>Contrato de Sociedade</h4>
+          <p>Elaboração e autenticação do contrato de sociedade com validade legal completa.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
+
+        <div class="sc reveal delay-3" data-preco="Mão de Obra" data-valor="MT 5.000">
+          <div class="sc-hover-tag"><i class="fa fa-tag"></i> MT 5.000</div>
+          <div class="sc-ico"><i class="fa fa-tools"></i></div>
+          <h4>Mão de Obra</h4>
+          <p>Acompanhamento e execução de todos os trâmites burocráticos junto das entidades públicas.</p>
+          <div class="sc-footer-hint"><i class="fa fa-tag"></i> Clique para ver o preço</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROCESSO ══════════════════════════════════════════════ -->
+  <section class="sec sec-processo" id="processo">
+    <div class="sec-inner">
+      <div class="sec-header reveal">
+        <span class="sec-tag">Como Funciona</span>
+        <h2 class="sec-title">Processo <em>Simples</em>, em 4 Passos</h2>
+        <p class="sec-lead">Não precisa de se preocupar com burocracia. Nós tratamos de tudo.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal delay-1">
+          <div class="step-n">1</div>
+          <h4>Contacto Inicial</h4>
+          <p>Fale connosco pelo WhatsApp ou formulário. Vamos perceber o que precisa e explicar o processo.</p>
+        </div>
+        <div class="step reveal delay-2">
+          <div class="step-n">2</div>
+          <h4>Entrega de Documentos</h4>
+          <p>Fornecemos uma lista simples dos documentos necessários. Você entrega, nós tratamos do resto.</p>
+        </div>
+        <div class="step reveal delay-3">
+          <div class="step-n">3</div>
+          <h4>Processamento</h4>
+          <p>A nossa equipa trata de toda a submissão às entidades competentes — CGER, AT, municípios.</p>
+        </div>
+        <div class="step reveal delay-4">
+          <div class="step-n">4</div>
+          <h4>Empresa Pronta</h4>
+          <p>Recebe a sua empresa completamente legalizada, pronta para operar e gerar negócio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PREÇOS ════════════════════════════════════════════════ -->
+  <section class="sec sec-precos" id="precos">
+    <div class="sec-inner">
+      <div class="sec-header reveal">
+        <span class="sec-tag">Tabela de Preços</span>
+        <h2 class="sec-title" style="color:#fff;">Preços <em style="color:var(--amarelo)">Transparentes</em></h2>
+        <p class="sec-lead">Sem surpresas. Preços fixos para cada serviço.</p>
+      </div>
+
+      <!-- Linha 1 -->
+      <div class="precos-grid">
+
+        <div class="preco-card reveal delay-1" id="pc-criacao">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-building"></i></div>
+            <span class="pc-badge">Novo</span>
+          </div>
+          <div class="pc-nome">Criação de Empresas</div>
+          <div class="pc-valor"><sup>MT</sup> —</div>
+          <span class="pc-periodo">consultar preço</span>
+          <p class="pc-desc">Processo completo de criação e registo da sua empresa — inclui reserva, contrato, certidão
+            e NUIT.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Criação de Empresas','Consultar preço')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-2" id="pc-contabilidade">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-calculator"></i></div>
+            <span class="pc-badge" style="background:var(--azul-clr);color:#fff;">Mensal</span>
+          </div>
+          <div class="pc-nome">Contabilidade Organizada</div>
+          <div class="pc-valor"><sup>MT</sup> 10.000</div>
+          <span class="pc-periodo">por mês</span>
+          <p class="pc-desc">Gestão contabilística completa com relatórios mensais, organização de receitas, despesas e
+            obrigações fiscais.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Contabilidade Organizada','MT 10.000/mês')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card destaque reveal delay-3" id="pc-conta-banco">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-university"></i></div>
+            <span class="pc-badge">Popular</span>
+          </div>
+          <div class="pc-nome">Abertura de Conta Bancária</div>
+          <div class="pc-valor"><sup>MT</sup> 8.500</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc" style="color:var(--texto-s)">Apoio completo na abertura da conta bancária empresarial no
+            banco da sua preferência.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Abertura de Conta Bancária','MT 8.500')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-4" id="pc-inss">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-shield-alt"></i></div>
+            <span class="pc-badge" style="background:#10b981;color:#fff;">Novo</span>
+          </div>
+          <div class="pc-nome">Registro no INSS</div>
+          <div class="pc-valor"><sup>MT</sup> 5.000</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Registo da empresa e colaboradores no INSS, cumprindo todas as obrigações de segurança
+            social.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Registro no INSS','MT 5.000')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Linha 2 -->
+      <div class="precos-grid-2">
+
+        <div class="preco-card reveal delay-1" id="pc-analise">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-search"></i></div>
+            <span class="pc-badge" style="background:#10b981;color:#fff;">Novo</span>
+          </div>
+          <div class="pc-nome">Análise de Documentos</div>
+          <div class="pc-valor"><sup>MT</sup> 2.000</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Revisão e análise detalhada de toda a documentação empresarial, garantindo conformidade
+            legal e fiscal.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Análise de Documentos','MT 2.000')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-2" id="pc-reserva">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-bookmark"></i></div>
+          </div>
+          <div class="pc-nome">Reserva de Nome</div>
+          <div class="pc-valor"><sup>MT</sup> 400</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Reserva exclusiva do nome da sua empresa junto do CGER — primeiro passo obrigatório.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Reserva de Nome','MT 400')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-3" id="pc-contrato">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-handshake"></i></div>
+          </div>
+          <div class="pc-nome">Contrato de Sociedade</div>
+          <div class="pc-valor"><sup>MT</sup> 2.500</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Elaboração e autenticação do contrato de sociedade com toda a validade legal.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Contrato de Sociedade','MT 2.500')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-4" id="pc-certidao">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-certificate"></i></div>
+          </div>
+          <div class="pc-nome">Certidão Definitiva</div>
+          <div class="pc-valor"><sup>MT</sup> 2.500</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Obtenção da certidão definitiva — documento essencial para o funcionamento legal da
+            empresa.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Certidão Definitiva','MT 2.500')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Linha 3 -->
+      <div class="precos-grid-2" style="margin-top:18px;">
+
+        <div class="preco-card reveal delay-1" id="pc-nuit">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-id-card"></i></div>
+          </div>
+          <div class="pc-nome">NUIT Empresarial</div>
+          <div class="pc-valor"><sup>MT</sup> 1.000</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Registo do Número Único de Identificação Tributária da sua empresa junto da AT.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('NUIT Empresarial','MT 1.000')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-2" id="pc-alvara">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-stamp"></i></div>
+          </div>
+          <div class="pc-nome">Alvará</div>
+          <div class="pc-valor"><sup>MT</sup> 4.900</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Emissão do alvará de funcionamento — licença obrigatória para o exercício legal da
+            actividade.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Alvará','MT 4.900')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-3" id="pc-maodeobra">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-tools"></i></div>
+          </div>
+          <div class="pc-nome">Mão de Obra</div>
+          <div class="pc-valor"><sup>MT</sup> 5.000</div>
+          <span class="pc-periodo">pagamento único</span>
+          <p class="pc-desc">Serviço completo de acompanhamento e execução de todos os trâmites junto das entidades
+            públicas.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Mão de Obra','MT 5.000')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+        <div class="preco-card reveal delay-4" id="pc-iva">
+          <div class="pc-top">
+            <div class="pc-ico"><i class="fa fa-file-invoice"></i></div>
+            <span class="pc-badge" style="background:var(--azul-clr);color:#fff;">Mensal</span>
+          </div>
+          <div class="pc-nome">Pagamento de IVA</div>
+          <div class="pc-valor"><sup>MT</sup> 4.000</div>
+          <span class="pc-periodo">por mês</span>
+          <p class="pc-desc">Gestão mensal das obrigações de IVA — declarações, cálculo e submissão à Autoridade
+            Tributária.</p>
+          <div class="pc-divider"></div>
+          <button class="pc-btn" onclick="abrirModal('Pagamento de IVA (Mensal)','MT 4.000/mês')">
+            <i class="fab fa-whatsapp"></i> Solicitar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══════════════════════════════════════════════════ -->
+  <section class="sec sec-cta">
+    <div class="sec-inner">
+      <div class="cta-box reveal">
+        <div class="cta-content">
+          <h2>Pronto para abrir a sua <em>empresa</em>?</h2>
+          <p>Fale connosco hoje e comece o processo. É mais simples do que pensa.</p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn-wa" onclick="abrirModal('Consulta Geral','')">
+            <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
+          </button>
+          <a href="#precos" class="btn-wa-ghost">
+            <i class="fa fa-tag"></i> Ver Preços
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACTO ══════════════════════════════════════════════ -->
+  <section class="sec-contacto" id="contacto">
+    <div class="contacto-inner">
+      <div>
+        <h2>Contacte-nos</h2>
+        <p>Estamos disponíveis para responder a todas as suas dúvidas sobre a abertura da sua empresa.</p>
+
+        <div class="cont-item">
+          <div class="cont-ico"><i class="fa fa-phone"></i></div>
+          <div>
+            <strong>+258 84 569 8732</strong>
+            <span>Telefone principal / WhatsApp</span>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-ico"><i class="fa fa-phone"></i></div>
+          <div>
+            <strong>+258 83 372 7853</strong>
+            <span>Telefone alternativo</span>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-ico"><i class="fa fa-envelope"></i></div>
+          <div>
+            <strong>lflimitada01@gmail.com</strong>
+            <span>E-mail</span>
+          </div>
+        </div>
+        <div class="cont-item">
+          <div class="cont-ico"><i class="fa fa-map-marker-alt"></i></div>
+          <div>
+            <strong>Maputo, Moçambique</strong>
+            <span>Localização</span>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="https://wa.me/258845698732" class="soc-btn wa" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#" class="soc-btn fb" title="Facebook — LF Redes e Consultoria">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="soc-btn ig" title="Instagram — LF Redes e Consultoria">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="soc-btn tt" title="TikTok — LF Redes e Consultoria">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="contacto-form-box">
+        <h4>Envie uma mensagem</h4>
+        <form onsubmit="enviarFormContacto(event)">
+          <input type="text" class="cf-input" placeholder="O seu nome *" required />
+          <input type="tel" class="cf-input" placeholder="Telefone *" required />
+          <input type="email" class="cf-input" placeholder="E-mail (opcional)" />
+          <select class="cf-input">
+            <option value="" disabled selected>Seleccionar serviço...</option>
+            <option>Criação de Empresas — consultar preço</option>
+            <option>Contabilidade Organizada — MT 10.000/mês</option>
+            <option>Abertura de Conta Bancária — MT 8.500</option>
+            <option>Registro no INSS — MT 5.000</option>
+            <option>Análise de Documentos — MT 2.000</option>
+            <option>Reserva de Nome — MT 400</option>
+            <option>Contrato de Sociedade — MT 2.500</option>
+            <option>Certidão Definitiva — MT 2.500</option>
+            <option>NUIT Empresarial — MT 1.000</option>
+            <option>Alvará — MT 4.900</option>
+            <option>Mão de Obra — MT 5.000</option>
+            <option>Pagamento de IVA — MT 4.000/mês</option>
+            <option>Pacote Completo</option>
+          </select>
+          <button type="submit" class="btn-cf">
+            <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <footer>
+    <p>© 2026 <span>LF Redes & Consultoria, Lda</span> — Agência de Contabilidade, Auditoria e Gestão Empresarial.
+      Maputo, Moçambique.</p>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
+  <script>
+    // ── Menu Hamburger ─────────────────────────────────────────
+    function toggleMenu() {
+      const links = document.getElementById('nav-links');
+      const burger = document.getElementById('nav-hamburger');
+      const backdrop = document.getElementById('nav-backdrop');
+      const aberto = links.classList.toggle('open');
+      burger.classList.toggle('open', aberto);
+      backdrop.classList.toggle('open', aberto);
+      document.body.style.overflow = aberto ? 'hidden' : '';
+    }
+
+    function fecharMenu() {
+      document.getElementById('nav-links').classList.remove('open');
+      document.getElementById('nav-hamburger').classList.remove('open');
+      document.getElementById('nav-backdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Cards de serviço: hover tooltip + clique vai para preço ──
+    const mapaServico = {
+      'Criação de Empresas': 'pc-criacao',
+      'Contabilidade Organizada': 'pc-contabilidade',
+      'Abertura de Conta Bancária': 'pc-conta-banco',
+      'Registro no INSS': 'pc-inss',
+      'Análise de Documentos': 'pc-analise',
+      'Reserva de Nome': 'pc-reserva',
+      'Certidão Definitiva': 'pc-certidao',
+      'Emissão de Alvará': 'pc-alvara',
+      'NUIT Empresarial': 'pc-nuit',
+      'Pagamento de IVA': 'pc-iva',
+      'Contrato de Sociedade': 'pc-contrato',
+      'Mão de Obra': 'pc-maodeobra',
+    };
+
+    document.querySelectorAll('.sc').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        const nome = card.querySelector('h4').textContent.trim();
+        const alvo = mapaServico[nome];
+        const target = alvo ? document.getElementById(alvo) : null;
+
+        if (target) {
+          // Rola até à secção de preços
+          document.getElementById('precos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          // Destaca o card de preço após rolar
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.classList.add('pc-highlight');
+            setTimeout(() => target.classList.remove('pc-highlight'), 2200);
+          }, 400);
+        } else {
+          // Sem preço fixo — abre modal directo
+          const preco = card.dataset.valor || '';
+          abrirModal(nome, preco);
+        }
+      });
+    });
+
+    // ── Navbar scroll ──────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // ── Reveal on scroll ──────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Modal ──────────────────────────────────────────────────
+    let _pacote = '', _preco = '';
+
+    function abrirModal(pacote, preco) {
+      _pacote = pacote; _preco = preco;
+      const label = preco ? `${pacote} — ${preco}` : pacote;
+      document.getElementById('modal-pacote-label').textContent = label;
+      document.getElementById('modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('modal-nome').focus();
+    }
+
+    function fecharModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('modal').addEventListener('click', function (e) {
+      if (e.target === this) fecharModal();
+    });
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+    function irWhatsApp(e) {
+      e.preventDefault();
+      const nome = document.getElementById('modal-nome').value.trim();
+      const email = document.getElementById('modal-email').value.trim();
+      if (!nome) { document.getElementById('modal-nome').focus(); return; }
+
+      let msg = `Olá! Sou *${nome}*`;
+      if (email) msg += ` (${email})`;
+      msg += ` e tenho interesse no serviço: *${_pacote}*`;
+      if (_preco) msg += ` — *${_preco}*`;
+      msg += '.\n\nPoderia dar-me mais informações?';
+
+      const url = `https://wa.me/258845698732?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      fecharModal();
+      document.getElementById('modal-form').reset();
+    }
+
+    // ── Formulário de contacto ─────────────────────────────────
+    function enviarFormContacto(e) {
+      e.preventDefault();
+      const form = e.target;
+      const nome = form.querySelector('input[type="text"]').value.trim();
+      const tel = form.querySelector('input[type="tel"]').value.trim();
+      const serv = form.querySelector('select').value;
+
+      let msg = `Olá! Sou *${nome}* (${tel})`;
+      if (serv) msg += ` e tenho interesse em: *${serv}*`;
+      msg += '.\n\nAgradecia o vosso contacto.';
+
+      const url = `https://wa.me/258845698732?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+  </script>
 </body>
+
 </html>
