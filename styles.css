@@ -1881,3 +1881,282 @@ footer span {
     transform: none;
   }
 }
+
+/* ╔══════════════════════════════════════════════════════════╗
+   ║         SISTEMA DE COTAÇÃO MULTI-SERVIÇO                 ║
+   ╚══════════════════════════════════════════════════════════╝ */
+
+/* ── Card seleccionado ───────────────────────────────────────*/
+.pc-selecionado {
+  border: 2px solid var(--amarelo) !important;
+  background: rgba(251,191,36,0.06) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 38px rgba(251,191,36,0.22) !important;
+}
+
+.pc-selecionado::after {
+  content: '\f058';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: -11px; right: -9px;
+  width: 26px; height: 26px;
+  background: var(--amarelo);
+  color: var(--azul-esc);
+  border-radius: 50%;
+  font-size: 0.88rem;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(251,191,36,0.4);
+}
+
+/* ── Botão "Adicionar à Cotação" ─────────────────────────────*/
+.pc-btn-cot {
+  transition: all 0.25s ease !important;
+}
+
+.btn-selecionado {
+  background: var(--amarelo) !important;
+  color: var(--azul-esc) !important;
+  border-color: var(--amarelo) !important;
+  font-weight: 800 !important;
+}
+
+.btn-selecionado:hover {
+  background: #fcd34d !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Botão flutuante ─────────────────────────────────────────*/
+.cot-fab {
+  position: fixed;
+  bottom: 28px; right: 24px;
+  z-index: 997;
+  background: var(--azul-esc);
+  color: #fff;
+  border-radius: 50px;
+  padding: 14px 22px;
+  display: flex; align-items: center; gap: 9px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.88rem;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(13,47,138,0.35);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  border: 2px solid rgba(255,255,255,0.1);
+  user-select: none;
+}
+
+.cot-fab i { font-size: 1rem; transition: transform 0.3s; }
+
+.cot-fab:hover {
+  background: var(--azul);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(26,79,214,0.4);
+}
+
+.cot-fab:hover i { transform: rotate(-10deg) scale(1.1); }
+
+.cot-fab-ativo {
+  background: var(--amarelo) !important;
+  color: var(--azul-esc) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 8px 28px rgba(251,191,36,0.45) !important;
+  animation: fabPop 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.cot-fab-ativo:hover {
+  background: #fcd34d !important;
+  transform: translateY(-3px) !important;
+}
+
+@keyframes fabPop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.14) translateY(-3px); }
+  100% { transform: scale(1) translateY(-3px); }
+}
+
+/* Badge contador */
+.cot-fab-badge {
+  position: absolute;
+  top: -8px; left: -8px;
+  width: 22px; height: 22px;
+  background: #ef4444;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.7rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(239,68,68,0.4);
+}
+
+/* ── Modal de cotação ────────────────────────────────────────*/
+.cotacao-modal-box {
+  max-width: 500px !important;
+  padding: 36px 32px !important;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.cotacao-modal-box::-webkit-scrollbar { width: 4px; }
+.cotacao-modal-box::-webkit-scrollbar-track { background: var(--cinza-f); }
+.cotacao-modal-box::-webkit-scrollbar-thumb { background: var(--cinza-b); border-radius: 4px; }
+
+.cot-modal-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 22px;
+}
+
+.cot-header-ico {
+  width: 52px; height: 52px;
+  border-radius: 14px; background: var(--azul-pale);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.cot-header-ico i { color: var(--azul); font-size: 1.4rem; }
+.cot-modal-header h3 { font-size: 1.2rem; font-weight: 800; color: var(--texto); margin-bottom: 2px; }
+
+/* ── Lista de itens ──────────────────────────────────────────*/
+.cot-lista {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 14px;
+  max-height: 220px; overflow-y: auto;
+  padding-right: 3px;
+}
+
+.cot-lista::-webkit-scrollbar { width: 4px; }
+.cot-lista::-webkit-scrollbar-thumb { background: var(--cinza-b); border-radius: 4px; }
+
+.cot-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 13px;
+  background: var(--cinza-f); border: 1px solid var(--cinza-b);
+  border-radius: 11px; gap: 8px;
+  animation: slideIn 0.22s ease;
+}
+
+@keyframes slideIn {
+  from { opacity:0; transform:translateX(-8px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+
+.cot-item-info { display: flex; align-items: center; gap: 7px; flex: 1; min-width: 0; }
+
+.cot-item-nome {
+  font-size: 0.83rem; font-weight: 600; color: var(--texto);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.cot-item-tag {
+  font-size: 0.63rem; font-weight: 700;
+  padding: 2px 7px; border-radius: 50px; white-space: nowrap; flex-shrink: 0;
+}
+
+.tag-unico  { background: var(--azul-pale); color: var(--azul); }
+.tag-mensal { background: #fef3c7; color: #92400e; }
+
+.cot-item-dir { display: flex; align-items: center; gap: 9px; flex-shrink: 0; }
+
+.cot-item-preco {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.86rem; font-weight: 800; color: var(--azul-esc); white-space: nowrap;
+}
+
+.cot-item-rem {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: #fee2e2; border: none; color: #ef4444;
+  font-size: 0.68rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.18s; flex-shrink: 0;
+}
+
+.cot-item-rem:hover { background: #ef4444; color: #fff; }
+
+/* ── "Adicionar mais" ────────────────────────────────────────*/
+.cot-add-mais {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  color: var(--azul); font-size: 0.81rem; font-weight: 600;
+  cursor: pointer; padding: 8px 12px;
+  border-radius: 10px; border: 1.5px dashed var(--cinza-b);
+  margin-bottom: 16px; transition: all 0.2s;
+}
+
+.cot-add-mais:hover { border-color: var(--azul); background: var(--azul-pale); }
+
+/* ── Totais ──────────────────────────────────────────────────*/
+.cot-totais {
+  background: var(--cinza-f); border: 1px solid var(--cinza-b);
+  border-radius: 14px; padding: 15px 17px;
+}
+
+.cot-linha {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.84rem; color: var(--texto-s); margin-bottom: 7px;
+}
+
+.cot-linha:last-child { margin-bottom: 0; }
+
+.cot-divider { height: 1px; background: var(--cinza-b); margin: 9px 0; }
+
+.cot-total-row { color: var(--texto) !important; font-size: 0.95rem !important; }
+.cot-total-row strong { font-family: 'Syne', sans-serif; font-size: 1.1rem; color: var(--azul-esc); }
+
+/* ── Botão limpar ────────────────────────────────────────────*/
+.cot-btn-limpar {
+  width: 100%; background: none;
+  border: 1.5px solid var(--cinza-b); border-radius: 50px;
+  padding: 11px; font-size: 0.82rem; font-weight: 600;
+  color: var(--texto-s); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  transition: all 0.2s; margin-top: 10px; font-family: 'Syne', sans-serif;
+}
+
+.cot-btn-limpar:hover { border-color: #ef4444; color: #ef4444; background: #fee2e2; }
+
+/* ── Resumo mini (passo 2) ───────────────────────────────────*/
+.cot-resumo-mini {
+  background: var(--azul-pale); border: 1px solid rgba(26,79,214,0.15);
+  border-radius: 12px; padding: 13px 15px;
+  font-size: 0.81rem; color: var(--texto-s);
+  line-height: 1.85; margin-bottom: 16px;
+}
+
+.cot-resumo-mini strong { color: var(--azul-esc); }
+.cot-resumo-mini .resumo-total {
+  font-family: 'Syne', sans-serif; font-size: 1rem;
+  font-weight: 800; color: var(--azul);
+}
+
+/* ── Toast de instrução ──────────────────────────────────────*/
+.cot-hint-toast {
+  position: fixed; bottom: 90px; left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--azul-esc); color: #fff;
+  padding: 12px 22px; border-radius: 50px;
+  font-size: 0.83rem; font-weight: 600;
+  z-index: 9998; opacity: 0;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 24px rgba(13,47,138,0.3);
+  pointer-events: none;
+  display: flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+}
+
+.cot-hint-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Responsivo ──────────────────────────────────────────────*/
+@media (max-width: 768px) {
+  .cot-fab { bottom: 20px; right: 16px; padding: 12px 18px; font-size: 0.82rem; }
+  .cotacao-modal-box { padding: 26px 18px !important; max-height: 92vh; }
+  .cot-lista { max-height: 190px; }
+  .cot-hint-toast { white-space: normal; text-align: center; width: 88%; padding: 11px 16px; }
+}
+
+@media (max-width: 420px) {
+  .cot-fab-label { display: none; }
+  .cot-fab { width: 52px; height: 52px; padding: 0; border-radius: 50%; justify-content: center; }
+  .cot-fab i { font-size: 1.2rem; }
+  .cot-fab-badge { top: -6px; left: -6px; }
+  .cotacao-modal-box { padding: 20px 14px !important; }
+  .cot-item-nome { font-size: 0.78rem; }
+}
