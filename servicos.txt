@@ -1,0 +1,22 @@
+      registro de empresa(pacote)
+Reserva de nome - 400 mt
+Contracto de sociedade - 2500 mt
+Certidão definitiva - 2500 mt
+Nuit Empresarial - 1000 mt
+Alvará - 4900 mt
+Mão de Obra - 5000 mt
+
+        Conta Bancaria(pacote)
+Abertura de conta Bancaria - 6000 mt
+
+        IVA
+Pagementos de IVA - 4000 mt (mensal)
+
+        Criação de empresas(pacote)
+Contabilidade organizada - 10.000 mt (mensal)
+Abertura de conta Empresarial no banco - 8500 mt
+Registro de INSS - 500 mt
+Analise de documentos - 2000mt
+
+
+O site esta bom, mas tem muitas coisas, vamos organizar, agora ja temos os pacotes e os serviços que cada pacote desponibiliza, entao ao em vez de ficar cheio e o cliente não saber o que é o que, agora vamos fazer a organização em pacotes, mas mantendo a cotação e a amostra de preços, mas basicamente vamos mudar a estrutura do site, me surpreenda. Os pacotes e serviços estão no servicos.txt e asunto do site ja sabes no index, scrips e styles e tambem acho que tem pytohn ai, nao sei mas acho que ja nao tem. Então, a forma de mostrar será pacotes e ao clicar nos pacotes, mostrar o servico e precos, pequena descricao e botao de selecionar e temos que ter em conta que o cliente pode querer um 2 servicos de pacotes diferentes, no recibo deve vir, sercivo X de pacote X e servico Y de pacote Y. A parte de serviços pode tirar, pois vai ser mostrado no pacote

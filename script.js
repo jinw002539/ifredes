@@ -1,14 +1,13 @@
 /* ============================================================
    LF REDES & CONSULTORIA — script.js
-   Todo o JavaScript do site
    ============================================================ */
 
 /* ── Menu Hamburger ──────────────────────────────────────────*/
 function toggleMenu() {
-  const links    = document.getElementById('nav-links');
-  const burger   = document.getElementById('nav-hamburger');
+  const links = document.getElementById('nav-links');
+  const burger = document.getElementById('nav-hamburger');
   const backdrop = document.getElementById('nav-backdrop');
-  const aberto   = links.classList.toggle('open');
+  const aberto = links.classList.toggle('open');
   burger.classList.toggle('open', aberto);
   backdrop.classList.toggle('open', aberto);
   document.body.style.overflow = aberto ? 'hidden' : '';
@@ -21,43 +20,6 @@ function fecharMenu() {
   document.body.style.overflow = '';
 }
 
-/* ── Cards de serviço: hover tag + clique vai para preço ─────*/
-const mapaServico = {
-  'Criação de Empresas':        'pc-criacao',
-  'Contabilidade Organizada':   'pc-contabilidade',
-  'Abertura de Conta Bancária': 'pc-conta-banco',
-  'Registro no INSS':           'pc-inss',
-  'Análise de Documentos':      'pc-analise',
-  'Reserva de Nome':            'pc-reserva',
-  'Certidão Definitiva':        'pc-certidao',
-  'Emissão de Alvará':          'pc-alvara',
-  'NUIT Empresarial':           'pc-nuit',
-  'Pagamento de IVA':           'pc-iva',
-  'Contrato de Sociedade':      'pc-contrato',
-  'Mão de Obra':                'pc-maodeobra',
-};
-
-document.querySelectorAll('.sc').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => {
-    const nome   = card.querySelector('h4').textContent.trim();
-    const alvo   = mapaServico[nome];
-    const target = alvo ? document.getElementById(alvo) : null;
-
-    if (target) {
-      document.getElementById('precos').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(() => {
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        target.classList.add('pc-highlight');
-        setTimeout(() => target.classList.remove('pc-highlight'), 2200);
-      }, 400);
-    } else {
-      const preco = card.dataset.valor || '';
-      abrirModal(nome, preco);
-    }
-  });
-});
-
 /* ── Navbar scroll ───────────────────────────────────────────*/
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
@@ -66,19 +28,19 @@ window.addEventListener('scroll', () => {
 /* ── Reveal on scroll ────────────────────────────────────────*/
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* ── Modal de contacto simples ───────────────────────────────*/
+/* ── Modal simples ───────────────────────────────────────────*/
 let _pacote = '', _preco = '';
 
 function abrirModal(pacote, preco) {
   _pacote = pacote; _preco = preco;
-  const label = preco ? `${pacote} — ${preco}` : pacote;
+  const label = preco ? pacote + ' — ' + preco : pacote;
   document.getElementById('modal-pacote-label').textContent = label;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
-  document.getElementById('modal-nome').focus();
+  setTimeout(() => document.getElementById('modal-nome').focus(), 100);
 }
 
 function fecharModal() {
@@ -86,24 +48,21 @@ function fecharModal() {
   document.body.style.overflow = '';
 }
 
-document.getElementById('modal').addEventListener('click', function(e) {
+document.getElementById('modal').addEventListener('click', function (e) {
   if (e.target === this) fecharModal();
 });
 
 function irWhatsApp(e) {
   e.preventDefault();
-  const nome  = document.getElementById('modal-nome').value.trim();
+  const nome = document.getElementById('modal-nome').value.trim();
   const email = document.getElementById('modal-email').value.trim();
   if (!nome) { document.getElementById('modal-nome').focus(); return; }
-
-  let msg = `Olá! Sou *${nome}*`;
-  if (email) msg += ` (${email})`;
-  msg += ` e tenho interesse no serviço: *${_pacote}*`;
-  if (_preco) msg += ` — *${_preco}*`;
+  let msg = 'Olá! Sou *' + nome + '*';
+  if (email) msg += ' (' + email + ')';
+  msg += ' e tenho interesse no serviço: *' + _pacote + '*';
+  if (_preco) msg += ' — *' + _preco + '*';
   msg += '.\n\nPoderia dar-me mais informações?';
-
-  const url = `https://wa.me/258845698732?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
+  window.open('https://wa.me/258845698732?text=' + encodeURIComponent(msg), '_blank');
   fecharModal();
   document.getElementById('modal-form').reset();
 }
@@ -113,109 +72,104 @@ function enviarFormContacto(e) {
   e.preventDefault();
   const form = e.target;
   const nome = form.querySelector('input[type="text"]').value.trim();
-  const tel  = form.querySelector('input[type="tel"]').value.trim();
+  const tel = form.querySelector('input[type="tel"]').value.trim();
   const serv = form.querySelector('select').value;
-
-  let msg = `Olá! Sou *${nome}* (${tel})`;
-  if (serv) msg += ` e tenho interesse em: *${serv}*`;
+  let msg = 'Olá! Sou *' + nome + '* (' + tel + ')';
+  if (serv) msg += ' e tenho interesse em: *' + serv + '*';
   msg += '.\n\nAgradecia o vosso contacto.';
-
-  const url = `https://wa.me/258845698732?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
+  window.open('https://wa.me/258845698732?text=' + encodeURIComponent(msg), '_blank');
 }
 
-/* ── ESC fecha todos os modais ───────────────────────────────*/
-document.addEventListener('keydown', e => {
+/* ── ESC fecha modais ────────────────────────────────────────*/
+document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') { fecharModal(); fecharCotacao(); }
 });
 
+/* ============================================================
+   SISTEMA DE PACOTES
+   ============================================================ */
 
-/* ╔══════════════════════════════════════════════════════════╗
-   ║         SISTEMA DE COTAÇÃO MULTI-SERVIÇO                 ║
-   ╚══════════════════════════════════════════════════════════╝ */
-
-/* Base de dados dos serviços com preços e período */
-const SERVICOS_DB = {
-  'Reserva de Nome':             { preco: 400,    periodo: 'unico'  },
-  'Contrato de Sociedade':       { preco: 2500,   periodo: 'unico'  },
-  'Certidão Definitiva':         { preco: 2500,   periodo: 'unico'  },
-  'NUIT Empresarial':            { preco: 1000,   periodo: 'unico'  },
-  'Alvará':                      { preco: 4900,   periodo: 'unico'  },
-  'Mão de Obra':                 { preco: 5000,   periodo: 'unico'  },
-  'Abertura de Conta Bancária':  { preco: 8500,   periodo: 'unico'  },
-  'Registro no INSS':            { preco: 5000,   periodo: 'unico'  },
-  'Análise de Documentos':       { preco: 2000,   periodo: 'unico'  },
-  'Contabilidade Organizada':    { preco: 10000,  periodo: 'mensal' },
-  'Pagamento de IVA':            { preco: 4000,   periodo: 'mensal' },
-};
-
-/* Carrinho de serviços seleccionados */
-let carrinho = {};
-
-/* Formatar número: 12500 → 12.500 */
-function fmt(n) {
-  return n.toLocaleString('pt-PT');
+function abrirPacote(id, tabEl) {
+  document.querySelectorAll('.pac-tab').forEach(function (t) { t.classList.remove('active'); });
+  document.querySelectorAll('.pac-panel').forEach(function (p) { p.classList.remove('active'); });
+  if (tabEl) tabEl.classList.add('active');
+  const painel = document.getElementById('pac-' + id);
+  if (painel) painel.classList.add('active');
 }
 
-/* ── Seleccionar / desseleccionar um card de preço ───────────*/
-function toggleSelecao(btn) {
-  const card    = btn.closest('.preco-card');
-  const nome    = card.querySelector('.pc-nome').textContent.trim();
-  const info    = SERVICOS_DB[nome];
+function irParaPacote(id) {
+  document.getElementById('pacotes').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(function () {
+    const tab = document.querySelector('.pac-tab[data-pac="' + id + '"]');
+    abrirPacote(id, tab);
+  }, 450);
+}
 
-  /* Se o serviço não tem preço fixo, abre o modal normal */
-  if (!info) {
-    const labelPreco = card.querySelector('.pc-periodo') ?
-      card.querySelector('.pc-periodo').textContent.trim() : '';
-    abrirModal(nome, labelPreco);
-    return;
-  }
+/* ============================================================
+   SISTEMA DE COTAÇÃO
+   ============================================================ */
+
+var carrinho = {};
+
+function fmt(n) {
+  return Number(n).toLocaleString('pt-PT');
+}
+
+function toggleServico(btn) {
+  const card = btn.closest('.pac-servico');
+  const nome = card.dataset.nome;
+  const preco = parseInt(card.dataset.preco);
+  const periodo = card.dataset.periodo;
+  const pacote = card.dataset.pacote;
 
   if (carrinho[nome]) {
-    /* Remover do carrinho */
     delete carrinho[nome];
-    card.classList.remove('pc-selecionado');
-    btn.innerHTML = '<i class="fa fa-plus-circle"></i> Adicionar à Cotação';
-    btn.classList.remove('btn-selecionado');
+    card.classList.remove('ps-selecionado');
+    btn.innerHTML = '<i class="fa fa-plus"></i> Seleccionar';
+    btn.classList.remove('ps-btn-sel');
   } else {
-    /* Adicionar ao carrinho */
-    carrinho[nome] = { preco: info.preco, periodo: info.periodo };
-    card.classList.add('pc-selecionado');
-    btn.innerHTML = '<i class="fa fa-check-circle"></i> Adicionado ✓';
-    btn.classList.add('btn-selecionado');
+    carrinho[nome] = { preco: preco, periodo: periodo, pacote: pacote };
+    card.classList.add('ps-selecionado');
+    btn.innerHTML = '<i class="fa fa-check"></i> Adicionado';
+    btn.classList.add('ps-btn-sel');
   }
 
   actualizarFAB();
+  var fab = document.getElementById('cot-fab');
+  fab.classList.add('cot-fab-pulse');
+  setTimeout(function () { fab.classList.remove('cot-fab-pulse'); }, 600);
 }
 
-/* ── Actualizar o botão flutuante ────────────────────────────*/
-function actualizarFAB() {
-  const count  = Object.keys(carrinho).length;
-  const fab    = document.getElementById('cot-fab');
-  const badge  = document.getElementById('cot-badge');
+function selecionarTodoPacote(id) {
+  var painel = document.getElementById('pac-' + id);
+  painel.querySelectorAll('.pac-servico').forEach(function (card) {
+    var btn = card.querySelector('.ps-btn');
+    if (!carrinho[card.dataset.nome]) toggleServico(btn);
+  });
+}
 
-  badge.textContent  = count;
+function actualizarFAB() {
+  var count = Object.keys(carrinho).length;
+  var fab = document.getElementById('cot-fab');
+  var badge = document.getElementById('cot-badge');
+  badge.textContent = count;
   badge.style.display = count > 0 ? 'flex' : 'none';
   fab.classList.toggle('cot-fab-ativo', count > 0);
 }
 
-/* ── Calcular totais ─────────────────────────────────────────*/
 function calcularTotais() {
-  let totalUnico  = 0;
-  let totalMensal = 0;
-  Object.values(carrinho).forEach(s => {
-    if (s.periodo === 'unico')  totalUnico  += s.preco;
-    if (s.periodo === 'mensal') totalMensal += s.preco;
+  var unico = 0, mensal = 0;
+  Object.values(carrinho).forEach(function (s) {
+    if (s.periodo === 'unico') unico += s.preco;
+    if (s.periodo === 'mensal') mensal += s.preco;
   });
-  return { totalUnico, totalMensal, total: totalUnico + totalMensal };
+  return { unico: unico, mensal: mensal, total: unico + mensal };
 }
 
-/* ── Abrir modal de cotação ──────────────────────────────────*/
 function abrirCotacao() {
   if (Object.keys(carrinho).length === 0) {
-    /* Sem serviços: rola para preços e mostra toast */
-    document.getElementById('precos').scrollIntoView({ behavior: 'smooth' });
-    mostrarToast('Clique em "Adicionar à Cotação" nos serviços desejados');
+    document.getElementById('pacotes').scrollIntoView({ behavior: 'smooth' });
+    mostrarToast('Seleccione os serviços desejados nos pacotes');
     return;
   }
   renderLista();
@@ -225,103 +179,105 @@ function abrirCotacao() {
   document.body.style.overflow = 'hidden';
 }
 
-/* ── Renderizar lista de itens no modal ──────────────────────*/
 function renderLista() {
-  const lista = document.getElementById('cot-lista');
+  var lista = document.getElementById('cot-lista');
   lista.innerHTML = '';
 
-  Object.entries(carrinho).forEach(([nome, info]) => {
-    const row = document.createElement('div');
-    row.className = 'cot-item';
-    row.innerHTML = `
-      <div class="cot-item-info">
-        <span class="cot-item-nome">${nome}</span>
-        <span class="cot-item-tag ${info.periodo === 'mensal' ? 'tag-mensal' : 'tag-unico'}">
-          ${info.periodo === 'mensal' ? 'mensal' : 'único'}
-        </span>
-      </div>
-      <div class="cot-item-dir">
-        <span class="cot-item-preco">MT ${fmt(info.preco)}</span>
-        <button class="cot-item-rem" onclick="removerItem('${nome}')" title="Remover">
-          <i class="fa fa-times"></i>
-        </button>
-      </div>
-    `;
-    lista.appendChild(row);
+  // Agrupar por pacote
+  var porPacote = {};
+  Object.entries(carrinho).forEach(function (entry) {
+    var nome = entry[0], info = entry[1];
+    if (!porPacote[info.pacote]) porPacote[info.pacote] = [];
+    porPacote[info.pacote].push({ nome: nome, preco: info.preco, periodo: info.periodo });
   });
 
-  /* Actualizar totais */
-  const { totalUnico, totalMensal, total } = calcularTotais();
-  document.getElementById('cot-sub-unico').textContent  = `MT ${fmt(totalUnico)}`;
-  document.getElementById('cot-sub-mensal').textContent =
-    totalMensal > 0 ? `MT ${fmt(totalMensal)} /mês` : 'MT 0';
-  document.getElementById('cot-total-val').textContent  = `MT ${fmt(total)}`;
+  Object.entries(porPacote).forEach(function (entry) {
+    var pacote = entry[0], servicos = entry[1];
+    var grp = document.createElement('div');
+    grp.className = 'cot-grupo-header';
+    grp.innerHTML = '<i class="fa fa-folder"></i> ' + pacote;
+    lista.appendChild(grp);
+
+    servicos.forEach(function (s) {
+      var row = document.createElement('div');
+      row.className = 'cot-item';
+      row.innerHTML =
+        '<div class="cot-item-info">' +
+        '<span class="cot-item-nome">' + s.nome + '</span>' +
+        '<span class="cot-item-tag ' + (s.periodo === 'mensal' ? 'tag-mensal' : 'tag-unico') + '">' +
+        (s.periodo === 'mensal' ? 'mensal' : 'único') +
+        '</span>' +
+        '</div>' +
+        '<div class="cot-item-dir">' +
+        '<span class="cot-item-preco">MT ' + fmt(s.preco) + '</span>' +
+        '<button class="cot-item-rem" onclick="removerItem(\'' + s.nome + '\')" title="Remover">' +
+        '<i class="fa fa-times"></i>' +
+        '</button>' +
+        '</div>';
+      lista.appendChild(row);
+    });
+  });
+
+  var t = calcularTotais();
+  document.getElementById('cot-sub-unico').textContent = 'MT ' + fmt(t.unico);
+  document.getElementById('cot-sub-mensal').textContent = t.mensal > 0 ? 'MT ' + fmt(t.mensal) + ' /mês' : 'MT 0';
+  document.getElementById('cot-total-val').textContent = 'MT ' + fmt(t.total);
 }
 
-/* ── Remover item do carrinho ────────────────────────────────*/
 function removerItem(nome) {
-  /* Desseleccionar card visualmente */
-  document.querySelectorAll('.preco-card').forEach(card => {
-    const pcNome = card.querySelector('.pc-nome');
-    if (pcNome && pcNome.textContent.trim() === nome) {
-      card.classList.remove('pc-selecionado');
-      const btn = card.querySelector('.pc-btn');
-      if (btn) {
-        btn.innerHTML = '<i class="fa fa-plus-circle"></i> Adicionar à Cotação';
-        btn.classList.remove('btn-selecionado');
-      }
+  document.querySelectorAll('.pac-servico').forEach(function (card) {
+    if (card.dataset.nome === nome) {
+      card.classList.remove('ps-selecionado');
+      var btn = card.querySelector('.ps-btn');
+      if (btn) { btn.innerHTML = '<i class="fa fa-plus"></i> Seleccionar'; btn.classList.remove('ps-btn-sel'); }
     }
   });
-
   delete carrinho[nome];
   actualizarFAB();
-
-  if (Object.keys(carrinho).length === 0) {
-    fecharCotacao();
-    return;
-  }
+  if (Object.keys(carrinho).length === 0) { fecharCotacao(); return; }
   renderLista();
 }
 
-/* ── Limpar tudo ─────────────────────────────────────────────*/
 function limparTudo() {
-  document.querySelectorAll('.pc-selecionado').forEach(card => {
-    card.classList.remove('pc-selecionado');
-    const btn = card.querySelector('.pc-btn');
-    if (btn) {
-      btn.innerHTML = '<i class="fa fa-plus-circle"></i> Adicionar à Cotação';
-      btn.classList.remove('btn-selecionado');
-    }
+  document.querySelectorAll('.ps-selecionado').forEach(function (card) {
+    card.classList.remove('ps-selecionado');
+    var btn = card.querySelector('.ps-btn');
+    if (btn) { btn.innerHTML = '<i class="fa fa-plus"></i> Seleccionar'; btn.classList.remove('ps-btn-sel'); }
   });
   carrinho = {};
   actualizarFAB();
   fecharCotacao();
 }
 
-/* ── Fechar modal cotação ────────────────────────────────────*/
 function fecharCotacao() {
-  const el = document.getElementById('modal-cotacao');
-  if (el) {
-    el.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  var el = document.getElementById('modal-cotacao');
+  if (el) { el.classList.remove('open'); document.body.style.overflow = ''; }
 }
 
-/* ── Ir para passo 2 (dados do cliente) ─────────────────────*/
 function irParaDados() {
-  const { totalUnico, totalMensal, total } = calcularTotais();
-  const nServicos = Object.keys(carrinho).length;
+  var t = calcularTotais();
+  var n = Object.keys(carrinho).length;
+  var porPacote = {};
+  Object.entries(carrinho).forEach(function (entry) {
+    var nome = entry[0], info = entry[1];
+    if (!porPacote[info.pacote]) porPacote[info.pacote] = [];
+    porPacote[info.pacote].push(nome);
+  });
 
-  let resumo = `<strong>${nServicos} serviço${nServicos > 1 ? 's' : ''} seleccionado${nServicos > 1 ? 's' : ''}</strong><br>`;
-  Object.keys(carrinho).forEach(n => { resumo += `<span>· ${n}</span><br>`; });
-  if (totalUnico > 0)  resumo += `<br>Pagamento único: <strong>MT ${fmt(totalUnico)}</strong><br>`;
-  if (totalMensal > 0) resumo += `Pagamento mensal: <strong>MT ${fmt(totalMensal)}/mês</strong><br>`;
-  resumo += `<br><span class="resumo-total">Total: MT ${fmt(total)}</span>`;
+  var resumo = '<strong>' + n + ' serviço' + (n > 1 ? 's' : '') + ' seleccionado' + (n > 1 ? 's' : '') + '</strong><br><br>';
+  Object.entries(porPacote).forEach(function (entry) {
+    resumo += '<span style="font-weight:700;color:var(--azul);">📦 ' + entry[0] + '</span><br>';
+    entry[1].forEach(function (s) { resumo += '&nbsp;&nbsp;· ' + s + '<br>'; });
+    resumo += '<br>';
+  });
+  if (t.unico > 0) resumo += 'Único: <strong>MT ' + fmt(t.unico) + '</strong><br>';
+  if (t.mensal > 0) resumo += 'Mensal: <strong>MT ' + fmt(t.mensal) + '/mês</strong><br>';
+  resumo += '<span class="resumo-total">Total: MT ' + fmt(t.total) + '</span>';
 
   document.getElementById('cot-resumo-mini').innerHTML = resumo;
   document.getElementById('cot-step-1').style.display = 'none';
   document.getElementById('cot-step-2').style.display = 'block';
-  document.getElementById('cot-nome').focus();
+  setTimeout(function () { document.getElementById('cot-nome').focus(); }, 100);
 }
 
 function voltarStep1() {
@@ -329,75 +285,72 @@ function voltarStep1() {
   document.getElementById('cot-step-2').style.display = 'none';
 }
 
-/* ── Gerar e enviar cotação para o WhatsApp ──────────────────*/
 function enviarCotacaoWA() {
-  const nome  = document.getElementById('cot-nome').value.trim();
-  const email = document.getElementById('cot-email').value.trim();
-  const tel   = document.getElementById('cot-tel').value.trim();
+  var nome = document.getElementById('cot-nome').value.trim();
+  var email = document.getElementById('cot-email').value.trim();
+  var tel = document.getElementById('cot-tel').value.trim();
 
   if (!nome) {
-    const inp = document.getElementById('cot-nome');
+    var inp = document.getElementById('cot-nome');
     inp.style.borderColor = '#ef4444';
     inp.focus();
-    setTimeout(() => inp.style.borderColor = '', 2000);
+    setTimeout(function () { inp.style.borderColor = ''; }, 2000);
     return;
   }
 
-  const { totalUnico, totalMensal, total } = calcularTotais();
-  const data = new Date().toLocaleDateString('pt-PT');
-  const hora = new Date().toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
+  var t = calcularTotais();
+  var data = new Date().toLocaleDateString('pt-PT');
+  var hora = new Date().toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
 
-  /* Montar mensagem em formato de recibo */
-  let msg = '';
-  msg += `🏢 *LF REDES & CONSULTORIA, LDA*\n`;
-  msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  msg += `📋 *PEDIDO DE COTAÇÃO*\n`;
-  msg += `📅 ${data} às ${hora}\n`;
-  msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  msg += `👤 *Cliente:* ${nome}\n`;
-  if (email) msg += `📧 *E-mail:* ${email}\n`;
-  if (tel)   msg += `📞 *Telefone:* ${tel}\n`;
-  msg += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  msg += `📦 *SERVIÇOS SOLICITADOS:*\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-
-  Object.entries(carrinho).forEach(([nome, info], i) => {
-    const tag = info.periodo === 'mensal' ? ' /mês' : '';
-    msg += `*${i + 1}. ${nome}*\n`;
-    msg += `   💰 MT ${fmt(info.preco)}${tag}\n\n`;
+  var porPacote = {};
+  Object.entries(carrinho).forEach(function (entry) {
+    var n = entry[0], info = entry[1];
+    if (!porPacote[info.pacote]) porPacote[info.pacote] = [];
+    porPacote[info.pacote].push({ nome: n, preco: info.preco, periodo: info.periodo });
   });
 
-  msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  if (totalUnico  > 0) msg += `💵 *Pagamento único:*  MT ${fmt(totalUnico)}\n`;
-  if (totalMensal > 0) msg += `🔄 *Pagamento mensal:* MT ${fmt(totalMensal)}/mês\n`;
-  msg += `\n💎 *TOTAL ESTIMADO: MT ${fmt(total)}*\n`;
-  msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-  msg += `Aguardo a vossa confirmação e disponibilidade. 🙏\n`;
-  msg += `_Cotação gerada em lfredeseconsultoria.co.mz_`;
+  var msg = '';
+  msg += '🏢 *LF REDES & CONSULTORIA, LDA*\n';
+  msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  msg += '📋 *PEDIDO DE COTAÇÃO*\n';
+  msg += '📅 ' + data + ' às ' + hora + '\n';
+  msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  msg += '👤 *Cliente:* ' + nome + '\n';
+  if (email) msg += '📧 *E-mail:* ' + email + '\n';
+  if (tel) msg += '📞 *Telefone:* ' + tel + '\n';
+  msg += '\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  msg += '📦 *SERVIÇOS POR PACOTE:*\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
 
-  const url = `https://wa.me/258845698732?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
+  Object.entries(porPacote).forEach(function (entry) {
+    msg += '📁 *' + entry[0] + '*\n';
+    entry[1].forEach(function (s, i) {
+      var tag = s.periodo === 'mensal' ? ' /mês' : '';
+      msg += '   ' + (i + 1) + '. ' + s.nome + ' — MT ' + fmt(s.preco) + tag + '\n';
+    });
+    msg += '\n';
+  });
+
+  msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  if (t.unico > 0) msg += '💵 *Pagamento único:*  MT ' + fmt(t.unico) + '\n';
+  if (t.mensal > 0) msg += '🔄 *Pagamento mensal:* MT ' + fmt(t.mensal) + '/mês\n';
+  msg += '\n💎 *TOTAL ESTIMADO: MT ' + fmt(t.total) + '*\n';
+  msg += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  msg += 'Aguardo a vossa confirmação. 🙏';
+
+  window.open('https://wa.me/258845698732?text=' + encodeURIComponent(msg), '_blank');
   fecharCotacao();
 }
 
-/* ── Fechar modal cotação ao clicar fora ─────────────────────*/
-document.addEventListener('DOMContentLoaded', () => {
-  const mc = document.getElementById('modal-cotacao');
-  if (mc) {
-    mc.addEventListener('click', function(e) {
-      if (e.target === this) fecharCotacao();
-    });
-  }
+document.addEventListener('DOMContentLoaded', function () {
+  var mc = document.getElementById('modal-cotacao');
+  if (mc) mc.addEventListener('click', function (e) { if (e.target === this) fecharCotacao(); });
 });
 
-/* ── Toast de instrução ──────────────────────────────────────*/
 function mostrarToast(msg) {
-  const toast = document.createElement('div');
-  toast.className = 'cot-hint-toast';
-  toast.innerHTML = `<i class="fa fa-hand-pointer"></i> ${msg}`;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.classList.add('show'), 50);
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 400);
-  }, 3500);
+  var t = document.createElement('div');
+  t.className = 'cot-hint-toast';
+  t.innerHTML = '<i class="fa fa-hand-pointer"></i> ' + msg;
+  document.body.appendChild(t);
+  setTimeout(function () { t.classList.add('show'); }, 50);
+  setTimeout(function () { t.classList.remove('show'); setTimeout(function () { t.remove(); }, 400); }, 3500);
 }
