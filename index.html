@@ -1,605 +1,602 @@
 <!DOCTYPE html>
 <html lang="pt">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
-  <meta name="theme-color" content="\#1a3a6e" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LF Redes &amp; Consultoria — Abertura de Empresas em Moçambique</title>
-  <link rel="stylesheet" href="styles.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
+    <meta name="theme-color" content="\#1a3a6e" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LF Redes &amp; Consultoria — Abertura de Empresas em Moçambique</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
 
-  <!-- MODAL CONTACTO SIMPLES -->
-  <div class="modal-overlay" id="modal">
-    <div class="modal-box">
-      <button class="modal-close" onclick="fecharModal()"><i class="fa fa-times"></i></button>
-      <div class="modal-header-ico"><i class="fa fa-headset"></i></div>
-      <h3>Falar com um Consultor</h3>
-      <p class="modal-sub">Preencha os seus dados para ser redirecionado ao WhatsApp.</p>
-      <div class="modal-pacote-tag" id="modal-pacote-label">—</div>
-      <form id="modal-form" onsubmit="irWhatsApp(event)">
-        <input type="text" class="modal-input" id="modal-nome" placeholder="O seu nome completo *" required />
-        <input type="email" class="modal-input" id="modal-email" placeholder="O seu e-mail (opcional)" />
-        <button type="submit" class="btn-modal-wa">
-          <i class="fab fa-whatsapp"></i> Continuar para o WhatsApp
-        </button>
-      </form>
-      <p class="modal-aviso"><i class="fab fa-whatsapp"></i> Será redirecionado ao WhatsApp com a informação do serviço
-        seleccionado.</p>
-    </div>
-  </div>
-
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <div class="nav-logo-icon">LF</div>
-        <div class="nav-logo-text">
-          <strong>LF Redes &amp; Consultoria</strong>
-          <span>Agência de Gestão Empresarial</span>
-        </div>
-      </a>
-      <div class="nav-links" id="nav-links">
-        <a href="#pacotes" onclick="fecharMenu()">Pacotes</a>
-        <a href="#processo" onclick="fecharMenu()">Como Funciona</a>
-        <a href="#contacto" onclick="fecharMenu()">Contacto</a>
-        <a href="#contacto" class="btn-nav-cta" onclick="fecharMenu()">
-          <i class="fab fa-whatsapp"></i> Falar Connosco
-        </a>
-      </div>
-      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-  <div class="nav-backdrop" id="nav-backdrop" onclick="fecharMenu()"></div>
-
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badge"><span></span> Especialistas em Abertura de Empresas em Moçambique</div>
-        <h1>Abra a Sua Empresa<br />de Forma <em>Rápida</em> e Segura</h1>
-        <p class="hero-sub">A LF Redes &amp; Consultoria trata de todo o processo — da reserva de nome ao alvará — para
-          que se possa focar no que realmente importa: o seu negócio.</p>
-        <div class="hero-btns">
-          <a href="#pacotes" class="btn-hero-main">
-            <i class="fa fa-boxes"></i> Ver Pacotes
-          </a>
-          <button class="btn-hero-ghost" onclick="abrirModal('Consulta Geral', '')">
-            <i class="fab fa-whatsapp"></i> Falar Connosco
-          </button>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="n">+200</div>
-            <div class="l">Empresas Abertas</div>
-          </div>
-          <div class="hero-stat">
-            <div class="n">5+</div>
-            <div class="l">Anos de Experiência</div>
-          </div>
-          <div class="hero-stat">
-            <div class="n">98%</div>
-            <div class="l">Clientes Satisfeitos</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-title">Os Nossos Pacotes</div>
-        <div class="hero-pacote-pill" onclick="irParaPacote('registro')">
-          <div class="hpp-ico"><i class="fa fa-building"></i></div>
-          <div class="hpp-info"><strong>Registo de Empresa</strong><span>6 serviços incluídos</span></div>
-          <i class="fa fa-arrow-right hpp-arr"></i>
-        </div>
-        <div class="hero-pacote-pill" onclick="irParaPacote('bancaria')">
-          <div class="hpp-ico"><i class="fa fa-university"></i></div>
-          <div class="hpp-info"><strong>Conta Bancária</strong><span>1 serviço incluído</span></div>
-          <i class="fa fa-arrow-right hpp-arr"></i>
-        </div>
-        <div class="hero-pacote-pill" onclick="irParaPacote('iva')">
-          <div class="hpp-ico"><i class="fa fa-file-invoice"></i></div>
-          <div class="hpp-info"><strong>IVA</strong><span>Gestão mensal</span></div>
-          <i class="fa fa-arrow-right hpp-arr"></i>
-        </div>
-        <div class="hero-pacote-pill" onclick="irParaPacote('criacao')">
-          <div class="hpp-ico"><i class="fa fa-rocket"></i></div>
-          <div class="hpp-info"><strong>Criação de Empresas</strong><span>4 serviços incluídos</span></div>
-          <i class="fa fa-arrow-right hpp-arr"></i>
-        </div>
-        <div class="hero-card-cta" onclick="abrirCotacao()">
-          <p><i class="fa fa-receipt"></i>&nbsp; Ver a minha Cotação</p>
-          <i class="fa fa-arrow-right"></i>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACOTES -->
-  <section class="sec sec-pacotes" id="pacotes">
-    <div class="sec-inner">
-      <div class="sec-header reveal">
-        <span class="sec-tag">O que Oferecemos</span>
-        <h2 class="sec-title">Os Nossos <em>Pacotes</em></h2>
-        <p class="sec-lead">Escolha o pacote que precisa. Clique para ver os serviços e preços incluídos — pode
-          seleccionar serviços de pacotes diferentes.</p>
-      </div>
-
-      <!-- TABS dos pacotes -->
-      <div class="pac-tabs">
-        <button class="pac-tab active" data-pac="registro" onclick="abrirPacote('registro', this)">
-          <i class="fa fa-building"></i> Registo de Empresa
-        </button>
-        <button class="pac-tab" data-pac="bancaria" onclick="abrirPacote('bancaria', this)">
-          <i class="fa fa-university"></i> Conta Bancária
-        </button>
-        <button class="pac-tab" data-pac="iva" onclick="abrirPacote('iva', this)">
-          <i class="fa fa-file-invoice"></i> IVA
-        </button>
-        <button class="pac-tab" data-pac="criacao" onclick="abrirPacote('criacao', this)">
-          <i class="fa fa-rocket"></i> Criação de Empresas
-        </button>
-      </div>
-
-      <!-- PAINEL: Registo de Empresa -->
-      <div class="pac-panel active" id="pac-registro">
-        <div class="pac-panel-header">
-          <div class="pac-panel-ico"><i class="fa fa-building"></i></div>
-          <div>
-            <h3>Pacote Registo de Empresa</h3>
-            <p>Tudo o que precisa para registar a sua empresa legalmente em Moçambique.</p>
-          </div>
-          <div class="pac-total-badge">A partir de <strong>MT 16.300</strong></div>
-        </div>
-        <div class="pac-servicos-grid">
-          <div class="pac-servico" data-nome="Reserva de Nome" data-preco="400" data-periodo="unico"
-            data-pacote="Registo de Empresa">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-bookmark"></i></div>
-              <div class="ps-info">
-                <strong>Reserva de Nome</strong>
-                <span>Reserva exclusiva do nome junto do CGER — primeiro passo obrigatório.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 400</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="Contrato de Sociedade" data-preco="2500" data-periodo="unico"
-            data-pacote="Registo de Empresa">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-handshake"></i></div>
-              <div class="ps-info">
-                <strong>Contrato de Sociedade</strong>
-                <span>Elaboração e autenticação do contrato de sociedade com validade legal completa.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 2.500</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="Certidão Definitiva" data-preco="2500" data-periodo="unico"
-            data-pacote="Registo de Empresa">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-certificate"></i></div>
-              <div class="ps-info">
-                <strong>Certidão Definitiva</strong>
-                <span>Documento essencial para o funcionamento legal da sua empresa.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 2.500</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="NUIT Empresarial" data-preco="1000" data-periodo="unico"
-            data-pacote="Registo de Empresa">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-id-card"></i></div>
-              <div class="ps-info">
-                <strong>NUIT Empresarial</strong>
-                <span>Registo do número fiscal da empresa junto da Autoridade Tributária.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 1.000</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="Alvará" data-preco="4900" data-periodo="unico"
-            data-pacote="Registo de Empresa">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-stamp"></i></div>
-              <div class="ps-info">
-                <strong>Alvará</strong>
-                <span>Licença obrigatória para o exercício legal da actividade comercial.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 4.900</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="Mão de Obra" data-preco="5000" data-periodo="unico"
-            data-pacote="Registo de Empresa">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-tools"></i></div>
-              <div class="ps-info">
-                <strong>Mão de Obra</strong>
-                <span>Acompanhamento e execução de todos os trâmites junto das entidades públicas.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 5.000</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-        </div>
-        <div class="pac-footer">
-          <button class="pac-select-all" onclick="selecionarTodoPacote('registro')">
-            <i class="fa fa-check-double"></i> Seleccionar Pacote Completo
-          </button>
-          <button class="pac-ver-cotacao" onclick="abrirCotacao()">
-            <i class="fa fa-receipt"></i> Ver Cotação
-          </button>
-        </div>
-      </div>
-
-      <!-- PAINEL: Conta Bancária -->
-      <div class="pac-panel" id="pac-bancaria">
-        <div class="pac-panel-header">
-          <div class="pac-panel-ico"><i class="fa fa-university"></i></div>
-          <div>
-            <h3>Pacote Conta Bancária</h3>
-            <p>Abertura de conta empresarial no banco da sua preferência.</p>
-          </div>
-          <div class="pac-total-badge">MT <strong>6.000</strong></div>
-        </div>
-        <div class="pac-servicos-grid">
-          <div class="pac-servico" data-nome="Abertura de Conta Bancária" data-preco="6000" data-periodo="unico"
-            data-pacote="Conta Bancária">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-university"></i></div>
-              <div class="ps-info">
-                <strong>Abertura de Conta Bancária</strong>
-                <span>Apoio completo na abertura da conta bancária empresarial — tratamos de toda a documentação
-                  necessária.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 6.000</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-        </div>
-        <div class="pac-footer">
-          <button class="pac-select-all" onclick="selecionarTodoPacote('bancaria')">
-            <i class="fa fa-check-double"></i> Seleccionar Pacote Completo
-          </button>
-          <button class="pac-ver-cotacao" onclick="abrirCotacao()">
-            <i class="fa fa-receipt"></i> Ver Cotação
-          </button>
-        </div>
-      </div>
-
-      <!-- PAINEL: IVA -->
-      <div class="pac-panel" id="pac-iva">
-        <div class="pac-panel-header">
-          <div class="pac-panel-ico"><i class="fa fa-file-invoice"></i></div>
-          <div>
-            <h3>Pacote IVA</h3>
-            <p>Gestão mensal do IVA da sua empresa — declarações, cálculo e submissão.</p>
-          </div>
-          <div class="pac-total-badge">MT <strong>4.000</strong><small>/mês</small></div>
-        </div>
-        <div class="pac-servicos-grid">
-          <div class="pac-servico" data-nome="Pagamento de IVA" data-preco="4000" data-periodo="mensal"
-            data-pacote="IVA">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-file-invoice"></i></div>
-              <div class="ps-info">
-                <strong>Pagamento de IVA</strong>
-                <span>Gestão mensal das obrigações de IVA — declarações, cálculo e submissão à Autoridade
-                  Tributária.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 4.000</div>
-              <div class="ps-periodo">mensal</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-        </div>
-        <div class="pac-footer">
-          <button class="pac-select-all" onclick="selecionarTodoPacote('iva')">
-            <i class="fa fa-check-double"></i> Seleccionar Pacote Completo
-          </button>
-          <button class="pac-ver-cotacao" onclick="abrirCotacao()">
-            <i class="fa fa-receipt"></i> Ver Cotação
-          </button>
-        </div>
-      </div>
-
-      <!-- PAINEL: Criação de Empresas -->
-      <div class="pac-panel" id="pac-criacao">
-        <div class="pac-panel-header">
-          <div class="pac-panel-ico"><i class="fa fa-rocket"></i></div>
-          <div>
-            <h3>Pacote Criação de Empresas</h3>
-            <p>Apoio completo para criar e estruturar a sua empresa do zero.</p>
-          </div>
-          <div class="pac-total-badge">A partir de <strong>MT 21.000</strong></div>
-        </div>
-        <div class="pac-servicos-grid">
-          <div class="pac-servico" data-nome="Contabilidade Organizada" data-preco="10000" data-periodo="mensal"
-            data-pacote="Criação de Empresas">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-calculator"></i></div>
-              <div class="ps-info">
-                <strong>Contabilidade Organizada</strong>
-                <span>Gestão contabilística completa com relatórios mensais, organização de receitas e despesas.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 10.000</div>
-              <div class="ps-periodo">mensal</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="Abertura de Conta Empresarial" data-preco="8500" data-periodo="unico"
-            data-pacote="Criação de Empresas">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-university"></i></div>
-              <div class="ps-info">
-                <strong>Abertura de Conta Empresarial no Banco</strong>
-                <span>Abertura da conta bancária empresarial no banco da sua preferência.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 8.500</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="Registro no INSS" data-preco="500" data-periodo="unico"
-            data-pacote="Criação de Empresas">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-shield-alt"></i></div>
-              <div class="ps-info">
-                <strong>Registro no INSS</strong>
-                <span>Registo da empresa e colaboradores no Instituto Nacional de Segurança Social.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 500</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-          <div class="pac-servico" data-nome="Análise de Documentos" data-preco="2000" data-periodo="unico"
-            data-pacote="Criação de Empresas">
-            <div class="ps-left">
-              <div class="ps-ico"><i class="fa fa-search"></i></div>
-              <div class="ps-info">
-                <strong>Análise de Documentos</strong>
-                <span>Revisão e análise detalhada de toda a documentação, garantindo conformidade legal.</span>
-              </div>
-            </div>
-            <div class="ps-right">
-              <div class="ps-preco">MT 2.000</div>
-              <div class="ps-periodo">único</div>
-              <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
-            </div>
-          </div>
-        </div>
-        <div class="pac-footer">
-          <button class="pac-select-all" onclick="selecionarTodoPacote('criacao')">
-            <i class="fa fa-check-double"></i> Seleccionar Pacote Completo
-          </button>
-          <button class="pac-ver-cotacao" onclick="abrirCotacao()">
-            <i class="fa fa-receipt"></i> Ver Cotação
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PROCESSO -->
-  <section class="sec sec-processo" id="processo">
-    <div class="sec-inner">
-      <div class="sec-header reveal">
-        <span class="sec-tag">Como Funciona</span>
-        <h2 class="sec-title">Processo <em>Simples</em>, em 4 Passos</h2>
-        <p class="sec-lead">Não precisa de se preocupar com burocracia. Nós tratamos de tudo.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal delay-1">
-          <div class="step-n">1</div>
-          <h4>Escolha o Pacote</h4>
-          <p>Navegue pelos pacotes, escolha os serviços que precisa e adicione à sua cotação.</p>
-        </div>
-        <div class="step reveal delay-2">
-          <div class="step-n">2</div>
-          <h4>Envie a Cotação</h4>
-          <p>Preencha os seus dados e envie a cotação directamente para o nosso WhatsApp.</p>
-        </div>
-        <div class="step reveal delay-3">
-          <div class="step-n">3</div>
-          <h4>Processamento</h4>
-          <p>A nossa equipa trata de toda a submissão às entidades competentes — CGER, AT, municípios.</p>
-        </div>
-        <div class="step reveal delay-4">
-          <div class="step-n">4</div>
-          <h4>Empresa Pronta</h4>
-          <p>Recebe a sua empresa completamente legalizada, pronta para operar e gerar negócio.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="sec sec-cta">
-    <div class="sec-inner">
-      <div class="cta-box reveal">
-        <div class="cta-content">
-          <h2>Pronto para abrir a sua <em>empresa</em>?</h2>
-          <p>Fale connosco hoje e comece o processo. É mais simples do que pensa.</p>
-        </div>
-        <div class="cta-actions">
-          <button class="btn-wa" onclick="abrirModal('Consulta Geral','')">
-            <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
-          </button>
-          <a href="#pacotes" class="btn-wa-ghost">
-            <i class="fa fa-boxes"></i> Ver Pacotes
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="sec-contacto" id="contacto">
-    <div class="contacto-inner">
-      <div>
-        <h2>Contacte-nos</h2>
-        <p>Estamos disponíveis para responder a todas as suas dúvidas sobre a abertura da sua empresa.</p>
-        <div class="cont-item">
-          <div class="cont-ico"><i class="fa fa-phone"></i></div>
-          <div><strong>+258 84 569 8732</strong><span>Telefone principal / WhatsApp</span></div>
-        </div>
-        <div class="cont-item">
-          <div class="cont-ico"><i class="fa fa-phone"></i></div>
-          <div><strong>+258 83 372 7853</strong><span>Telefone alternativo</span></div>
-        </div>
-        <div class="cont-item">
-          <div class="cont-ico"><i class="fa fa-envelope"></i></div>
-          <div><strong>lflimitada01@gmail.com</strong><span>E-mail</span></div>
-        </div>
-        <div class="cont-item">
-          <div class="cont-ico"><i class="fa fa-map-marker-alt"></i></div>
-          <div><strong>Maputo, Moçambique</strong><span>Localização</span></div>
-        </div>
-        <div class="social-row">
-          <a href="https://wa.me/258845698732" class="soc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="soc-btn fb"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="soc-btn ig"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="soc-btn tt"><i class="fab fa-tiktok"></i></a>
-        </div>
-      </div>
-      <div class="contacto-form-box">
-        <h4>Envie uma mensagem</h4>
-        <form onsubmit="enviarFormContacto(event)">
-          <input type="text" class="cf-input" placeholder="O seu nome *" required />
-          <input type="tel" class="cf-input" placeholder="Telefone *" required />
-          <input type="email" class="cf-input" placeholder="E-mail (opcional)" />
-          <select class="cf-input">
-            <option value="" disabled selected>Seleccionar pacote...</option>
-            <option>Registo de Empresa</option>
-            <option>Conta Bancária</option>
-            <option>IVA (Mensal)</option>
-            <option>Criação de Empresas</option>
-            <option>Pacote Completo</option>
-          </select>
-          <button type="submit" class="btn-cf">
-            <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
+    <!-- MODAL CONTACTO SIMPLES -->
+    <div class="modal-overlay" id="modal">
+      <div class="modal-box">
+        <button class="modal-close" onclick="fecharModal()"><i class="fa fa-times"></i></button>
+        <div class="modal-header-ico"><i class="fa fa-headset"></i></div>
+        <h3>Falar com um Consultor</h3>
+        <p class="modal-sub">Preencha os seus dados para ser redirecionado ao WhatsApp.</p>
+        <div class="modal-pacote-tag" id="modal-pacote-label">—</div>
+        <form id="modal-form" onsubmit="irWhatsApp(event)">
+          <input type="text" class="modal-input" id="modal-nome" placeholder="O seu nome completo *" required />
+          <input type="email" class="modal-input" id="modal-email" placeholder="O seu e-mail (opcional)" />
+          <button type="submit" class="btn-modal-wa">
+            <i class="fab fa-whatsapp"></i> Continuar para o WhatsApp
           </button>
         </form>
+        <p class="modal-aviso"><i class="fab fa-whatsapp"></i> Será redirecionado ao WhatsApp com a informação do serviço
+          seleccionado.</p>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 <span>LF Redes &amp; Consultoria, Lda</span> — Agência de Contabilidade, Auditoria e Gestão Empresarial.
-      Maputo, Moçambique.</p>
-  </footer>
-
-  <!-- BOTÃO FLUTUANTE COTAÇÃO -->
-  <div class="cot-fab" id="cot-fab" onclick="abrirCotacao()">
-    <div class="cot-fab-badge" id="cot-badge" style="display:none;">0</div>
-    <i class="fa fa-receipt"></i>
-    <span class="cot-fab-label">Cotação</span>
-  </div>
-
-  <!-- MODAL COTAÇÃO -->
-  <div class="modal-overlay" id="modal-cotacao">
-    <div class="modal-box cotacao-modal-box">
-      <button class="modal-close" onclick="fecharCotacao()"><i class="fa fa-times"></i></button>
-      <div id="cot-step-1">
-        <div class="cot-modal-header">
-          <div class="cot-header-ico"><i class="fa fa-receipt"></i></div>
-          <div>
-            <h3>A Sua Cotação</h3>
-            <p class="modal-sub">Reveja os serviços seleccionados</p>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-icon">LF</div>
+          <div class="nav-logo-text">
+            <strong>LF Redes &amp; Consultoria</strong>
+            <span>Agência de Gestão Empresarial</span>
           </div>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="#pacotes" onclick="fecharMenu()">Pacotes</a>
+          <a href="#processo" onclick="fecharMenu()">Como Funciona</a>
+          <a href="#contacto" onclick="fecharMenu()">Contacto</a>
+          <a href="#contacto" class="btn-nav-cta" onclick="fecharMenu()">
+            <i class="fab fa-whatsapp"></i> Falar Connosco
+          </a>
         </div>
-        <div class="cot-lista" id="cot-lista"></div>
-        <div class="cot-add-mais" onclick="fecharCotacao()">
-          <i class="fa fa-plus-circle"></i> Adicionar mais serviços
-        </div>
-        <div class="cot-totais">
-          <div class="cot-linha"><span>Pagamento único</span><span id="cot-sub-unico">MT 0</span></div>
-          <div class="cot-linha"><span>Pagamento mensal</span><span id="cot-sub-mensal">MT 0</span></div>
-          <div class="cot-divider"></div>
-          <div class="cot-linha cot-total-row"><strong>Total Estimado</strong><strong id="cot-total-val">MT 0</strong>
-          </div>
-        </div>
-        <button class="btn-modal-wa" style="background:var(--azul);margin-top:18px;" onclick="irParaDados()">
-          <i class="fa fa-arrow-right"></i> Continuar e Gerar Cotação
-        </button>
-        <button class="cot-btn-limpar" onclick="limparTudo()">
-          <i class="fa fa-trash-alt"></i> Limpar tudo
+        <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
-      <div id="cot-step-2" style="display:none;">
-        <div class="cot-modal-header">
-          <div class="cot-header-ico" style="background:#e8f5e9;"><i class="fa fa-user" style="color:#10b981;"></i>
+    </nav>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="fecharMenu()"></div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="hero-inner">
+        <div>
+          <div class="hero-badge"><span></span> Especialistas em Abertura de Empresas em Moçambique</div>
+          <h1>Abra a Sua Empresa<br />de Forma <em>Rápida</em> e Segura</h1>
+          <p class="hero-sub">A LF Redes &amp; Consultoria trata de todo o processo — da reserva de nome ao alvará — para
+            que se possa focar no que realmente importa: o seu negócio.</p>
+          <div class="hero-btns">
+            <a href="#pacotes" class="btn-hero-main">
+              <i class="fa fa-boxes"></i> Ver Pacotes
+            </a>
+            <button class="btn-hero-ghost" onclick="abrirModal('Consulta Geral', '')">
+              <i class="fab fa-whatsapp"></i> Falar Connosco
+            </button>
           </div>
-          <div>
-            <h3>Os Seus Dados</h3>
-            <p class="modal-sub">Para personalizar a cotação</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="n">+200</div>
+              <div class="l">Empresas Abertas</div>
+            </div>
+            <div class="hero-stat">
+              <div class="n">5+</div>
+              <div class="l">Anos de Experiência</div>
+            </div>
+            <div class="hero-stat">
+              <div class="n">98%</div>
+              <div class="l">Clientes Satisfeitos</div>
+            </div>
           </div>
         </div>
-        <input type="text" id="cot-nome" class="modal-input" placeholder="Nome completo *" />
-        <input type="email" id="cot-email" class="modal-input" placeholder="E-mail (opcional)" />
-        <input type="tel" id="cot-tel" class="modal-input" placeholder="Telefone (opcional)" />
-        <div class="cot-resumo-mini" id="cot-resumo-mini"></div>
-        <button class="btn-modal-wa" onclick="enviarCotacaoWA()">
-          <i class="fab fa-whatsapp"></i> Enviar Cotação pelo WhatsApp
-        </button>
-        <button class="cot-btn-limpar" onclick="voltarStep1()">
-          <i class="fa fa-arrow-left"></i> Voltar
-        </button>
+        <div class="hero-card">
+          <div class="hero-card-title">Os Nossos Pacotes</div>
+          <div class="hero-pacote-pill" onclick="irParaPacote('registro')">
+            <div class="hpp-ico"><i class="fa fa-building"></i></div>
+            <div class="hpp-info"><strong>Registo de Empresas</strong><span>7 serviços incluídos</span></div>
+            <i class="fa fa-arrow-right hpp-arr"></i>
+          </div>
+          <div class="hero-pacote-pill" onclick="irParaPacote('conta')">
+            <div class="hpp-ico"><i class="fa fa-university"></i></div>
+            <div class="hpp-info"><strong>Conta Empresarial</strong><span>3 serviços incluídos</span></div>
+            <i class="fa fa-arrow-right hpp-arr"></i>
+          </div>
+          <div class="hero-pacote-pill" onclick="irParaPacote('prestacao')">
+            <div class="hpp-ico"><i class="fa fa-file-invoice"></i></div>
+            <div class="hpp-info"><strong>Prestação de Serviços</strong><span>4 serviços incluídos</span></div>
+            <i class="fa fa-arrow-right hpp-arr"></i>
+          </div>
+          <div class="hero-card-cta" onclick="abrirCotacao()">
+            <p><i class="fa fa-receipt"></i>&nbsp; Ver a minha Cotação</p>
+            <i class="fa fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACOTES -->
+    <section class="sec sec-pacotes" id="pacotes">
+      <div class="sec-inner">
+        <div class="sec-header reveal">
+          <span class="sec-tag">O que Oferecemos</span>
+          <h2 class="sec-title">Os Nossos <em>Pacotes</em></h2>
+          <p class="sec-lead">Escolha o pacote que precisa. Clique para ver os serviços e preços incluídos — pode
+            seleccionar serviços de pacotes diferentes.</p>
+        </div>
+
+        <!-- TABS dos pacotes -->
+        <div class="pac-tabs">
+          <button class="pac-tab active" data-pac="registro" onclick="abrirPacote('registro', this)">
+            <i class="fa fa-building"></i> Registo de Empresas
+          </button>
+          <button class="pac-tab" data-pac="conta" onclick="abrirPacote('conta', this)">
+            <i class="fa fa-university"></i> Conta Empresarial
+          </button>
+          <button class="pac-tab" data-pac="prestacao" onclick="abrirPacote('prestacao', this)">
+            <i class="fa fa-file-invoice"></i> Prestação de Serviços
+          </button>
+        </div>
+
+        <!-- PAINEL: Registo de Empresas -->
+        <div class="pac-panel active" id="pac-registro">
+          <div class="pac-panel-header">
+            <div class="pac-panel-ico"><i class="fa fa-building"></i></div>
+            <div>
+              <h3>1º Pacote — Registo de Empresas</h3>
+              <p>Tudo o que precisa para registar a sua empresa legalmente em Moçambique.</p>
+            </div>
+            <div class="pac-total-badge">Total <strong>MT 18.000</strong></div>
+          </div>
+          <div class="pac-servicos-grid">
+            <div class="pac-servico" data-nome="Reserva de Nome" data-preco="500" data-periodo="unico"
+              data-pacote="Registo de Empresas">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-bookmark"></i></div>
+                <div class="ps-info">
+                  <strong>Reserva de Nome</strong>
+                  <span>Reserva exclusiva do nome junto do CGER — primeiro passo obrigatório.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 500</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Contrato de Sociedade" data-preco="2500" data-periodo="unico"
+              data-pacote="Registo de Empresas">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-handshake"></i></div>
+                <div class="ps-info">
+                  <strong>Contrato de Sociedade</strong>
+                  <span>Elaboração e autenticação do contrato de sociedade com validade legal completa.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 2.500</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Certidão Definitiva" data-preco="3000" data-periodo="unico"
+              data-pacote="Registo de Empresas">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-certificate"></i></div>
+                <div class="ps-info">
+                  <strong>Certidão Definitiva</strong>
+                  <span>Documento essencial para o funcionamento legal da sua empresa.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 3.000</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="NUIT Empresarial" data-preco="1500" data-periodo="unico"
+              data-pacote="Registo de Empresas">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-id-card"></i></div>
+                <div class="ps-info">
+                  <strong>NUIT Empresarial</strong>
+                  <span>Registo do número fiscal da empresa junto da Autoridade Tributária.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 1.500</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Alvará" data-preco="5000" data-periodo="unico"
+              data-pacote="Registo de Empresas">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-stamp"></i></div>
+                <div class="ps-info">
+                  <strong>Alvará</strong>
+                  <span>Licença obrigatória para o exercício legal da actividade comercial.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 5.000</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Início de Actividade" data-preco="1500" data-periodo="unico"
+              data-pacote="Registo de Empresas">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-play-circle"></i></div>
+                <div class="ps-info">
+                  <strong>Início de Actividade</strong>
+                  <span>Declaração de início de actividade junto da Autoridade Tributária.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 1.500</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Mão de Obra" data-preco="4000" data-periodo="unico"
+              data-pacote="Registo de Empresas">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-tools"></i></div>
+                <div class="ps-info">
+                  <strong>Mão de Obra</strong>
+                  <span>Acompanhamento e execução de todos os trâmites junto das entidades públicas.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 4.000</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+          </div>
+          <div class="pac-footer">
+            <button class="pac-select-all" onclick="selecionarTodoPacote('registro')">
+              <i class="fa fa-check-double"></i> Seleccionar Pacote Completo
+            </button>
+            <button class="pac-ver-cotacao" onclick="abrirCotacao()">
+              <i class="fa fa-receipt"></i> Ver Cotação
+            </button>
+          </div>
+        </div>
+
+        <!-- PAINEL: Conta Empresarial -->
+        <div class="pac-panel" id="pac-conta">
+          <div class="pac-panel-header">
+            <div class="pac-panel-ico"><i class="fa fa-university"></i></div>
+            <div>
+              <h3>2º Pacote — Conta Empresarial</h3>
+              <p>Abertura de conta empresarial e publicação no Boletim da República.</p>
+            </div>
+            <div class="pac-total-badge">Total <strong>MT 14.000</strong></div>
+          </div>
+          <div class="pac-servicos-grid">
+            <div class="pac-servico" data-nome="Publicação no Boletim da República" data-preco="9000" data-periodo="unico"
+              data-pacote="Conta Empresarial">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-newspaper"></i></div>
+                <div class="ps-info">
+                  <strong>Publicação no Boletim da República (BR)</strong>
+                  <span>Publicação obrigatória no Boletim da República para validade jurídica da empresa.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 9.000</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Subscrição no Banco" data-preco="3000" data-periodo="unico"
+              data-pacote="Conta Empresarial">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-university"></i></div>
+                <div class="ps-info">
+                  <strong>Subscrição no Banco</strong>
+                  <span>Apoio completo na subscrição e abertura da conta bancária empresarial.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 3.000</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Mão de Obra (Conta)" data-preco="2000" data-periodo="unico"
+              data-pacote="Conta Empresarial">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-tools"></i></div>
+                <div class="ps-info">
+                  <strong>Mão de Obra</strong>
+                  <span>Acompanhamento e execução de todos os trâmites bancários e administrativos.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 2.000</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+          </div>
+          <div class="pac-footer">
+            <button class="pac-select-all" onclick="selecionarTodoPacote('conta')">
+              <i class="fa fa-check-double"></i> Seleccionar Pacote Completo
+            </button>
+            <button class="pac-ver-cotacao" onclick="abrirCotacao()">
+              <i class="fa fa-receipt"></i> Ver Cotação
+            </button>
+          </div>
+        </div>
+
+        <!-- PAINEL: Prestação de Serviços -->
+        <div class="pac-panel" id="pac-prestacao">
+          <div class="pac-panel-header">
+            <div class="pac-panel-ico"><i class="fa fa-file-invoice"></i></div>
+            <div>
+              <h3>3º Pacote — Prestação de Serviços</h3>
+              <p>Serviços contabilísticos e fiscais para a gestão contínua da sua empresa.</p>
+            </div>
+            <!--<div class="pac-total-badge">A partir de <strong>MT 8.000</strong></div>-->
+          </div>
+          <div class="pac-servicos-grid">
+            <div class="pac-servico" data-nome="Processamento de IVA" data-preco="10000" data-periodo="mensal"
+              data-pacote="Prestação de Serviços">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-file-invoice"></i></div>
+                <div class="ps-info">
+                  <strong>Processamento de IVA</strong>
+                  <span>Gestão mensal das obrigações de IVA — declarações, cálculo e submissão à AT.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 10.000</div>
+                <div class="ps-periodo">mensal</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Processamento de Salário" data-preco="10000" data-periodo="mensal"
+              data-pacote="Prestação de Serviços">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-money-bill-wave"></i></div>
+                <div class="ps-info">
+                  <strong>Processamento de Salário</strong>
+                  <span>Processamento mensal de salários, recibos e obrigações laborais dos colaboradores.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 10.000</div>
+                <div class="ps-periodo">mensal</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Balanço e Fecho de Contas" data-preco="25000" data-periodo="unico"
+              data-pacote="Prestação de Serviços">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-balance-scale"></i></div>
+                <div class="ps-info">
+                  <strong>Balanço e Fecho de Contas</strong>
+                  <span>Elaboração do balanço anual e fecho de contas com relatório contabilístico completo.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 25.000</div>
+                <div class="ps-periodo">único</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+            <div class="pac-servico" data-nome="Contabilidade ISPC" data-preco="8000" data-periodo="mensal"
+              data-pacote="Prestação de Serviços">
+              <div class="ps-left">
+                <div class="ps-ico"><i class="fa fa-calculator"></i></div>
+                <div class="ps-info">
+                  <strong>Contabilidade ISPC</strong>
+                  <span>Gestão contabilística conforme o regime do Imposto Simplificado para Pequenos Contribuintes.</span>
+                </div>
+              </div>
+              <div class="ps-right">
+                <div class="ps-preco">MT 8.000</div>
+                <div class="ps-periodo">mensal</div>
+                <button class="ps-btn" onclick="toggleServico(this)"><i class="fa fa-plus"></i> Seleccionar</button>
+              </div>
+            </div>
+          </div>
+          <div class="pac-footer">
+            <button class="pac-select-all" onclick="selecionarTodoPacote('prestacao')">
+              <i class="fa fa-check-double"></i> Seleccionar Pacote Completo
+            </button>
+            <button class="pac-ver-cotacao" onclick="abrirCotacao()">
+              <i class="fa fa-receipt"></i> Ver Cotação
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="sec sec-processo" id="processo">
+      <div class="sec-inner">
+        <div class="sec-header reveal">
+          <span class="sec-tag">Como Funciona</span>
+          <h2 class="sec-title">Processo <em>Simples</em>, em 4 Passos</h2>
+          <p class="sec-lead">Não precisa de se preocupar com burocracia. Nós tratamos de tudo.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal delay-1">
+            <div class="step-n">1</div>
+            <h4>Escolha o Pacote</h4>
+            <p>Navegue pelos pacotes, escolha os serviços que precisa e adicione à sua cotação.</p>
+          </div>
+          <div class="step reveal delay-2">
+            <div class="step-n">2</div>
+            <h4>Envie a Cotação</h4>
+            <p>Preencha os seus dados e envie a cotação directamente para o nosso WhatsApp.</p>
+          </div>
+          <div class="step reveal delay-3">
+            <div class="step-n">3</div>
+            <h4>Processamento</h4>
+            <p>A nossa equipa trata de toda a submissão às entidades competentes — CGER, AT, municípios.</p>
+          </div>
+          <div class="step reveal delay-4">
+            <div class="step-n">4</div>
+            <h4>Empresa Pronta</h4>
+            <p>Recebe a sua empresa completamente legalizada, pronta para operar e gerar negócio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sec sec-cta">
+      <div class="sec-inner">
+        <div class="cta-box reveal">
+          <div class="cta-content">
+            <h2>Pronto para abrir a sua <em>empresa</em>?</h2>
+            <p>Fale connosco hoje e comece o processo. É mais simples do que pensa.</p>
+          </div>
+          <div class="cta-actions">
+            <button class="btn-wa" onclick="abrirModal('Consulta Geral','')">
+              <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
+            </button>
+            <a href="#pacotes" class="btn-wa-ghost">
+              <i class="fa fa-boxes"></i> Ver Pacotes
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="sec-contacto" id="contacto">
+      <div class="contacto-inner">
+        <div>
+          <h2>Contacte-nos</h2>
+          <p>Estamos disponíveis para responder a todas as suas dúvidas sobre a abertura da sua empresa.</p>
+          <div class="cont-item">
+            <div class="cont-ico"><i class="fa fa-phone"></i></div>
+            <div><strong>+258 84 569 8732</strong><span>Telefone principal / WhatsApp</span></div>
+          </div>
+          <div class="cont-item">
+            <div class="cont-ico"><i class="fa fa-phone"></i></div>
+            <div><strong>+258 83 372 7853</strong><span>Telefone alternativo</span></div>
+          </div>
+          <div class="cont-item">
+            <div class="cont-ico"><i class="fa fa-envelope"></i></div>
+            <div><strong>lflimitada01@gmail.com</strong><span>E-mail</span></div>
+          </div>
+          <div class="cont-item">
+            <div class="cont-ico"><i class="fa fa-map-marker-alt"></i></div>
+            <div><strong>Maputo, Moçambique</strong><span>Localização</span></div>
+          </div>
+          <div class="social-row">
+            <a href="https://wa.me/258845698732" class="soc-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="soc-btn fb"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="soc-btn ig"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="soc-btn tt"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="contacto-form-box">
+          <h4>Envie uma mensagem</h4>
+          <form onsubmit="enviarFormContacto(event)">
+            <input type="text" class="cf-input" placeholder="O seu nome *" required />
+            <input type="tel" class="cf-input" placeholder="Telefone *" required />
+            <input type="email" class="cf-input" placeholder="E-mail (opcional)" />
+            <select class="cf-input">
+              <option value="" disabled selected>Seleccionar pacote...</option>
+              <option>Registo de Empresas</option>
+              <option>Conta Empresarial</option>
+              <option>Prestação de Serviços</option>
+              <option>Pacote Completo</option>
+            </select>
+            <button type="submit" class="btn-cf">
+              <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 <span>LF Redes &amp; Consultoria, Lda</span> — Agência de Contabilidade, Auditoria e Gestão Empresarial.
+        Maputo, Moçambique.</p>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE COTAÇÃO -->
+    <div class="cot-fab" id="cot-fab" onclick="abrirCotacao()">
+      <div class="cot-fab-badge" id="cot-badge" style="display:none;">0</div>
+      <i class="fa fa-receipt"></i>
+      <span class="cot-fab-label">Cotação</span>
+    </div>
+
+    <!-- MODAL COTAÇÃO -->
+    <div class="modal-overlay" id="modal-cotacao">
+      <div class="modal-box cotacao-modal-box">
+        <button class="modal-close" onclick="fecharCotacao()"><i class="fa fa-times"></i></button>
+        <div id="cot-step-1">
+          <div class="cot-modal-header">
+            <div class="cot-header-ico"><i class="fa fa-receipt"></i></div>
+            <div>
+              <h3>A Sua Cotação</h3>
+              <p class="modal-sub">Reveja os serviços seleccionados</p>
+            </div>
+          </div>
+          <div class="cot-lista" id="cot-lista"></div>
+          <div class="cot-add-mais" onclick="fecharCotacao()">
+            <i class="fa fa-plus-circle"></i> Adicionar mais serviços
+          </div>
+          <div class="cot-totais">
+            <div class="cot-linha"><span>Pagamento único</span><span id="cot-sub-unico">MT 0</span></div>
+            <div class="cot-linha"><span>Pagamento mensal</span><span id="cot-sub-mensal">MT 0</span></div>
+            <div class="cot-divider"></div>
+            <div class="cot-linha cot-total-row"><strong>Total Estimado</strong><strong id="cot-total-val">MT 0</strong>
+            </div>
+          </div>
+          <button class="btn-modal-wa" style="background:var(--azul);margin-top:18px;" onclick="irParaDados()">
+            <i class="fa fa-arrow-right"></i> Continuar e Gerar Cotação
+          </button>
+          <button class="cot-btn-limpar" onclick="limparTudo()">
+            <i class="fa fa-trash-alt"></i> Limpar tudo
+          </button>
+        </div>
+        <div id="cot-step-2" style="display:none;">
+          <div class="cot-modal-header">
+            <div class="cot-header-ico" style="background:#e8f5e9;"><i class="fa fa-user" style="color:#10b981;"></i>
+            </div>
+            <div>
+              <h3>Os Seus Dados</h3>
+              <p class="modal-sub">Para personalizar a cotação</p>
+            </div>
+          </div>
+          <input type="text" id="cot-nome" class="modal-input" placeholder="Nome completo *" />
+          <input type="email" id="cot-email" class="modal-input" placeholder="E-mail (opcional)" />
+          <input type="tel" id="cot-tel" class="modal-input" placeholder="Telefone (opcional)" />
+          <div class="cot-resumo-mini" id="cot-resumo-mini"></div>
+          <button class="btn-modal-wa" onclick="enviarCotacaoWA()">
+            <i class="fab fa-whatsapp"></i> Enviar Cotação pelo WhatsApp
+          </button>
+          <button class="cot-btn-limpar" onclick="voltarStep1()">
+            <i class="fa fa-arrow-left"></i> Voltar
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 
 </html>
